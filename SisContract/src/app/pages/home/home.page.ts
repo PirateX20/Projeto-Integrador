@@ -12,6 +12,8 @@ export class HomePage implements OnInit{
   constructor(private _route : Router,private activatedRoute: ActivatedRoute, public menuCtrl: MenuController) {
   }
 
+  //login por cpf e cnpj, ver quantidade de numeros ... cpf 11 - cnpj 14
+
   ngOnInit() {
     this.menuCtrl.enable(false);
   }
