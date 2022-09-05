@@ -1,0 +1,35 @@
+<head>
+  <script src="https://kit.fontawesome.com/1ab94d0eba.js" crossorigin="anonymous"></script>
+</head>
+<ion-content>
+  <body>
+    <main class="container">
+      <ion-list color="aqua">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
+        <form action="">
+            <div class="input-field">
+                <ion-input type="text" name="username" id="username"
+                    placeholder="E-mail"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <ion-input type="password" name="password" id="password"
+                    placeholder="Senha"></ion-input>
+                <div class="underline"></div>
+            </div>
+
+            <ion-button class="botao-login" color="aqua" expand="block" type="submit">Login</ion-button>
+        </form>
+        <footer>
+          <p class="footer-text">Novo no SisContract?</p>
+          <ion-button class="botao-cadastro" color="aqua" expand="block" type="submit">Cadastre-se</ion-button>
+        </footer>
+      </ion-list>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-button color="btns" (click)="gotoCadastrar()">
+          <ion-label>Modo Offline</ion-label>
+        </ion-button>
+      </ion-fab>
+    </main>
+  </body>
+</ion-content>

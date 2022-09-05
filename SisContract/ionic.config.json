@@ -1,0 +1,7 @@
+{
+  "name": "SisContract",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(45deg, #00ffb3, #059784);
+    /*background: linear-gradient(45deg, #ebebeb, #7effff);*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  main.container {
+    background: white;
+    /*background: #00ffb3;*/
+    min-width: 320px;
+    min-height: 40vh;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+  }
+  
+  main h2 {
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 5px;
+  }
+  
+  .Sis{
+    color: #059784;
+  }
+  
+  .resto{
+    color: #2bc9ac;
+  }
+  
+  ion-icon{
+    width: 15px;
+    height: 15px;
+  }
+  
+  main h2::before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 25px;
+    bottom: 3px;
+    left: 0;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #51726c, #2bc9ac);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-field {
+    position: relative;
+    background-color: white;
+    border-style: none;
+  }
+  
+  form .input-field:first-child {
+    margin-bottom: 1.5rem;
+  }
+  
+  .input-field .underline::before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: -5px;
+    left: 0;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .botao-login{
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 4px;
+  }
+  
+  /*form input[type="submit"] {
+    margin-top: 2rem;
+    padding: 0.4rem;
+    width: 100%;
+    background: linear-gradient(45deg, #51726c, #059784);
+    cursor: pointer;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 300;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }*/
+  
+  form input[type="submit"]:hover {
+    letter-spacing: 0.5px;
+    background: linear-gradient(to right,  #00ffb3, #059784);
+  }
+  
+  .footer-text {
+    text-align: center;
+    text-decoration: none;
+    padding-top: 1em;
+    font-weight: 600;
+    position: relative;
+  }
+  
+  footer{
+    display:block;
+  }
+  
+  .botao-cadastro{
+    margin-top: 0.1em;
+    padding: 0.3rem;
+    width: 100%;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 300;
+    border-radius: 4px;
+  }
+  
+  footer .footer-text{
+    color: #059784;
+  }
