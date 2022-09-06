@@ -9,8 +9,15 @@ import { MenuController } from '@ionic/angular';
 })
 export class HomePage implements OnInit{
 
-  constructor(private _route : Router,private activatedRoute: ActivatedRoute, public menuCtrl: MenuController) {
+  constructor(
+    private _route : Router,
+    private activatedRoute: ActivatedRoute, 
+    public menuCtrl: MenuController) {
   }
+  cpf_cnpj: number;
+  decimal_Section: string = '.';
+  confirm_digit: string = '-';
+  second_partCNPJ: string = '/';
 
   //login por cpf e cnpj, ver quantidade de numeros ... cpf 11 - cnpj 14
 
@@ -28,6 +35,6 @@ export class HomePage implements OnInit{
   }
 
   authLogin(){
-    console.log("logou man");
+    console.log("logou man, Gzus was here");
   }
 }

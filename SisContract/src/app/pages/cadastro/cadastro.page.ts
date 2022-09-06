@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cadastro',
@@ -11,7 +11,8 @@ export class CadastroPage implements OnInit {
   documento: string = "CPF";
   checkboxes: boolean ;
 
-  constructor(public menuCtrl: MenuController) { }
+  constructor(public menuCtrl: MenuController,
+    private alertController: AlertController) { }
 
   ngOnInit() {
     this.menuCtrl.enable(false);
@@ -19,10 +20,19 @@ export class CadastroPage implements OnInit {
 
   cadastrar(){
     console.log("isso");
+    this.presentAlert("Cadastro", "Sucesso!", "Cadastro realizado com sucesso!");
   }
 
-  alterar(){
+  alterar(){}
 
+  async presentAlert(header: string, subHeader: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      subHeader,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
 }
