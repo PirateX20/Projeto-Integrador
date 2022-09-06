@@ -19,10 +19,15 @@ export class HomePage implements OnInit{
   }
 
   gotoCadastrar(){
-    this._route.navigate(["/cadastrar"]);
+    this._route.navigate(["/cadastro"]);
   }
   
   gotoOfflineMode(){
-    this._route.navigate(["/offlineMode"]);
+    console.log("off man");
+    //this._route.navigate(["/offlineMode"]);
+  }
+
+  authLogin(){
+    console.log("logou man");
   }
 }

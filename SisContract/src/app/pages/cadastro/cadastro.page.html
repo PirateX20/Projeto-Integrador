@@ -1,0 +1,44 @@
+<ion-content>
+  <body>
+    <main class="container">
+      <ion-list color="aqua">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
+        <form action="">
+            <div class="input-field">
+                <ion-input type="text" name="username" id="username" placeholder="E-mail"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+                <ion-input type="password" name="password" id="password" placeholder="Senha"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="text" name="nome" id="nome" placeholder="Nome"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="number" name="documento" id="documento" placeholder="{{documento}}"></ion-input>
+            <div class="underline"></div>
+            </div>
+
+            <div class="btns-doc">
+              <ion-label color="btns">Documento</ion-label>
+
+                <ion-checkbox slot="start"></ion-checkbox>
+                <ion-label color="btns">Cpf</ion-label>
+
+                <ion-checkbox slot="start"></ion-checkbox>
+                <ion-label color="btns">Cnpj</ion-label>
+
+            </div>
+
+        </form>
+        <footer>
+
+          <ion-button class="botao-cadastro" color="aqua" expand="block" type="submit" (click)="cadastrar()">Cadastre-se</ion-button>
+        </footer>
+      </ion-list>
+
+    </main>
+  </body>
+</ion-content>

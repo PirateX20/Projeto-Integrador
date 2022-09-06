@@ -69,8 +69,8 @@
     border-style: none;
   }
   
-  form .input-field:first-child {
-    margin-bottom: 1.5rem;
+  form .input-field {
+    margin-bottom: 1rem;
   }
   
   .input-field .underline::before {
@@ -78,19 +78,35 @@
     position: absolute;
     height: 1px;
     width: 100%;
-    bottom: -5px;
+    bottom: 5px;
     left: 0;
     background: rgba(0, 0, 0, 0.2);
   }
+
+  ion-checkbox {
+    --size: 18px;
+    --background-checked: #059784;
+
+  }
   
-  .botao-login{
-    margin-top: 2rem;
-    padding: 0.4rem;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 300;
-    border-radius: 4px;
+  ion-checkbox::part(container) {
+    border-radius: 6px;
+    border: 2px solid #2bc9ac;
+  }
+
+  .btns-doc{
+    display: flex;
+  }
+
+  ion-checkbox{
+    margin: 0.1rem;
+  }
+
+  .btns-doc ion-label{
+    margin-right: 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
   }
   
   /*form input[type="submit"] {
