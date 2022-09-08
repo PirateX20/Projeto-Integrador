@@ -30,8 +30,7 @@ export class HomePage implements OnInit{
   }
   
   gotoOfflineMode(){
-    console.log("off man");
-    //this._route.navigate(["/offlineMode"]);
+    this._route.navigate(["/offline"]);
   }
 
   authLogin(){

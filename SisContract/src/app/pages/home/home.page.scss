@@ -7,7 +7,7 @@
   }
   
   body {
-    background: linear-gradient(45deg, #00ffb3, #059784);
+    background: linear-gradient(45deg, #7feeb6, #043d36);
     /*background: linear-gradient(45deg, #ebebeb, #7effff);*/
     background-repeat: no-repeat;
     min-height: 100vh;
@@ -18,7 +18,7 @@
   }
   
   main.container {
-    background: white;
+    background: rgb(255, 255, 255);
     /*background: #00ffb3;*/
     min-width: 320px;
     min-height: 40vh;
@@ -124,6 +124,7 @@
   }
   
   .botao-cadastro{
+    color:rgba(189, 126, 8, 0.2);
     margin-top: 0.1em;
     padding: 0.3rem;
     width: 100%;
