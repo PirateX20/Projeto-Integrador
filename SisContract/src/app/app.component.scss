@@ -117,3 +117,34 @@ ion-note {
 ion-item.selected {
   --color: var(--ion-color-primary);
 }
+
+.Sis{
+  color: #059784;
+}
+
+.resto{
+  color: #2bc9ac;
+}
+
+h2::before {
+  content: '';
+  position: absolute;
+  height: 4px;
+  width: 25px;
+  bottom: 3px;
+  left: 0;
+  border-radius: 8px;
+  background: linear-gradient(45deg, #51726c, #2bc9ac);
+}
+
+h2 {
+  font-weight: 600;
+  margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.icone-barra{
+  width: 15px;
+  height: 15px;
+}
