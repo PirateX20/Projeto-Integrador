@@ -18,7 +18,11 @@ const routes: Routes = [
   {
     path: 'cadastro',
     loadChildren: () => import('./pages/cadastro/cadastro.module').then( m => m.CadastroPageModule)
+  },  {
+    path: 'offline',
+    loadChildren: () => import('./pages/offline/offline.module').then( m => m.OfflinePageModule)
   }
+
 ];
 
 @NgModule({

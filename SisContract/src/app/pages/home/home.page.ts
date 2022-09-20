@@ -8,7 +8,7 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage implements OnInit{
-
+  //
   constructor(
     private _route : Router,
     private activatedRoute: ActivatedRoute, 
@@ -30,8 +30,7 @@ export class HomePage implements OnInit{
   }
   
   gotoOfflineMode(){
-    console.log("off man");
-    //this._route.navigate(["/offlineMode"]);
+    this._route.navigate(["/offline"]);
   }
 
   authLogin(){

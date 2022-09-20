@@ -13,7 +13,7 @@
                 <div class="underline"></div>
             </div>
 
-            <ion-button class="botao-login" color="aqua" expand="block" type="submit" (click)="authLogin()">Login</ion-button>
+            <ion-button class="botao-login" color="btns" expand="block" type="submit" (click)="authLogin()">Login</ion-button>
         </form>
         <!--
         <form #loginForm="ngForm">
@@ -24,12 +24,19 @@
         -->
         <footer>
           <p class="footer-text">Novo no SisContract?</p>
-          <ion-button class="botao-cadastro" color="aqua" expand="block" type="submit" (click)="gotoCadastrar()">Cadastre-se</ion-button>
+          <ion-button 
+            class="botao-cadastro" 
+            color="btns" 
+            expand="block" 
+            type="submit" 
+            (click)="gotoCadastrar()">
+            Cadastre-se
+          </ion-button>
         </footer>
       </ion-list>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-button color="btns" (click)="gotoOfflineMode()">
-          <ion-label>Modo Offline</ion-label>
+          <ion-label>Entrar como Convidado</ion-label>
         </ion-button>
       </ion-fab>
     </main>
