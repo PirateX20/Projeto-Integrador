@@ -7,8 +7,7 @@
   }
   
   body {
-    background: linear-gradient(45deg, #00ffb3, #059784);
-    /*background: linear-gradient(45deg, #ebebeb, #7effff);*/
+    background: linear-gradient(45deg, var(--ion-color-aqua), #1e6e64);
     background-repeat: no-repeat;
     min-height: 100vh;
     min-width: 100vw;
@@ -19,7 +18,6 @@
   
   main.container {
     background: white;
-    /*background: #00ffb3;*/
     min-width: 320px;
     min-height: 40vh;
     padding: 2rem;
@@ -108,24 +106,6 @@
     font-weight: 600;
     position: relative;
   }
-  
-  /*form input[type="submit"] {
-    margin-top: 2rem;
-    padding: 0.4rem;
-    width: 100%;
-    background: linear-gradient(45deg, #51726c, #059784);
-    cursor: pointer;
-    color: white;
-    font-size: 0.9rem;
-    font-weight: 300;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-  }
-  
-  form input[type="submit"]:hover {
-    letter-spacing: 0.5px;
-    background: linear-gradient(to right,  #00ffb3, #059784);
-  }*/
   
   .footer-text {
     text-align: center;
