@@ -11,5 +11,7 @@ export class AppComponent {
     { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
     { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
   ];
-  constructor() {}
+  constructor() {
+    //asdasdasds
+  }
 }
