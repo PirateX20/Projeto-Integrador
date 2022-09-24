@@ -50,9 +50,15 @@ export class CadastroPage implements OnInit {
     return this.form_cadastro.controls;
   }
 
-  onTermsChanged(event: Event) {
+  /*onTermsChanged(event: Event) {
     const ev = event as CheckboxCustomEvent;
     this.canDismiss = ev.detail.checked;
+  }*/
+
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
   }
 
   cadastrar(){

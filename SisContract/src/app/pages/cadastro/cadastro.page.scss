@@ -39,6 +39,42 @@
   .resto{
     color: #2bc9ac;
   }
+
+  #open-modal{
+    color: #1e6e64;
+  }
+
+  li{
+    margin-top: 1.5rem;
+    list-style:circle;
+    margin-left: 1.5rem;
+  }
+
+  .check-termos{
+    padding-top: 1rem;
+    margin-left: 0.8rem;
+    align-items: center;
+  }
+
+  .ion-padding{
+    font-size: large;
+    
+  }
+
+  .empresa-termos{
+    margin-top: 1.5rem;
+    font-size: small;
+  }
+
+  .termos-uso-label{
+    margin-left: 1rem;
+    text-align: center;
+    justify-content: center;
+    text-decoration: none;
+    padding-top: 0.2em;
+    font-weight: 600;
+    position:absolute;
+  }
   
   ion-icon{
     width: 15px;
