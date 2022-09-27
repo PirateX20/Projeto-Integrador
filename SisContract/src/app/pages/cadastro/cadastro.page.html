@@ -25,12 +25,32 @@
               <div class="underline"></div>
             </div>
 
-            <ion-item>
-              <ion-select placeholder="Escolha o tipo de documento">
-                <ion-select-option value="CPF" (onClick)="setDocumento(value)">CPF</ion-select-option>
+            <div>
+              <ion-list>
+                <ion-radio-group value="Documento">
+                  <div>
+                    <ion-list-header>
+                      <ion-label>Documento</ion-label>
+                    </ion-list-header>
+                    <div class="radio-grupo">
+                      <div class="radio">
+                        <ion-label class="label-radio">CPF</ion-label>
+                        <ion-radio slot="start" value="CPF" class="item-radio" color="btns"></ion-radio>
+                      </div>
+                      <div class="radio">
+                        <ion-label>CNPJ</ion-label>
+                        <ion-radio slot="start" value="CNPJ" class="item-radio" color="btns"></ion-radio>
+                      </div>
+                    </div>
+                  </div>
+                </ion-radio-group>
+              </ion-list>
+
+              <!--<ion-select placeholder="Escolha o tipo de documento">
+                <ion-select-option value="CPF" >CPF</ion-select-option>
                 <ion-select-option value="CNPJ">CNPJ</ion-select-option>
-              </ion-select>
-            </ion-item>
+              </ion-select>-->
+            </div>
             <footer>
               <!--Parte responsável pelos termos de uso-->
               <div class="check-termos">

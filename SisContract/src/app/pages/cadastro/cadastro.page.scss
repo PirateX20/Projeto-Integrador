@@ -102,6 +102,32 @@
     background-color: white;
     border-style: none;
   }
+
+  .item-radio{
+    margin-left: 0.5rem;
+  }
+
+  .radio{
+    margin-right: 1rem;
+  }
+
+  ion-radio{
+    border:2px solid #1e6e64;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  ion-list-header{
+    color: #059784;
+  }
+
+  .radio-grupo{
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
   
   form .input-field {
     margin-bottom: 1rem;
