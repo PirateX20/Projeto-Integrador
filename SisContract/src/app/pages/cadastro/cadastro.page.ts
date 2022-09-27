@@ -15,7 +15,7 @@ export class CadastroPage implements OnInit {
   presentingElement = null;
 
   form_cadastro: FormGroup;
-  documento: string = "CPF";
+  documento: string = "CPF/CNPJ";
   checkboxes: boolean ;
 
   constructor(
@@ -56,11 +56,12 @@ export class CadastroPage implements OnInit {
   }*/
 
   isModalOpen = false;
-
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
   }
-
+  setDocumento(value: string){
+    this.documento = value;
+  }
   cadastrar(){
     console.log("isso");
     this.presentAlert("Cadastro", "Sucesso!", "Cadastro realizado com sucesso!");

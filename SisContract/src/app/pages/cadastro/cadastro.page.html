@@ -25,13 +25,12 @@
               <div class="underline"></div>
             </div>
 
-            <div class="btns-doc">
-              <ion-label color="btns">Documento</ion-label>
-                <ion-checkbox slot="start"></ion-checkbox>
-                <ion-label color="btns">Cpf</ion-label>
-                <ion-checkbox slot="start"></ion-checkbox>
-                <ion-label color="btns">Cnpj</ion-label>
-            </div>
+            <ion-item>
+              <ion-select placeholder="Escolha o tipo de documento">
+                <ion-select-option value="CPF" (onClick)="setDocumento(value)">CPF</ion-select-option>
+                <ion-select-option value="CNPJ">CNPJ</ion-select-option>
+              </ion-select>
+            </ion-item>
             <footer>
               <!--Parte responsável pelos termos de uso-->
               <div class="check-termos">
