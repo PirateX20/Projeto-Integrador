@@ -1,24 +1,23 @@
-import { Usuario } from "../interface/usuario";
 import { Endereco } from "./endereco";
 
-export class Empresa implements Usuario{
+export class Empresa{
     private _id:string;
-    _email: string;
-    _senha: string;
-    _nome: string;
-    _endereco: Endereco;
-    private _cnpj: string;
-    private _cargos: string[];
+    private _email: string;
+    private _senha: string;
+    private _nome: string;
+    private _endereco: Endereco;
+    private _documento: any;
+    private _cargos: string;
 
     public get id():string{
         return this._id;
     }
 
-    constructor(email:string,senha:string,nome:string,cnpj:string){
+    constructor(email:string,senha:string,nome:string,documento:string){
         this._email=email;
         this._senha=senha;
         this._nome=nome;
-        this._cnpj=cnpj;
+        this._documento=documento;
     }
 
     public get email(): string {
@@ -49,19 +48,18 @@ export class Empresa implements Usuario{
         this._endereco = value;
     }
 
-    public get cnpj(): string {
-        return this._cnpj;
+    public get documento(): any {
+        return this._documento;
     }
-    public set cnpj(value: string) {
-        this._cnpj = value;
+    public set documento(value: any) {
+        this._documento = value;
     }
 
-    public get cargos():string[]{
+    public get cargos(): string {
         return this._cargos;
     }
-
-    addCargo(cargo : string){
-        this._cargos.push(cargo);
+    public set cargos(value: string) {
+        this._cargos = value;
     }
 
 }
