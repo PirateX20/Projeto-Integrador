@@ -27,7 +27,7 @@
 
             <div>
               <ion-list>
-                <ion-radio-group>
+                <ion-radio-group value="docs">
                   <div>
                     <ion-list-header>
                       <ion-label>Documento *</ion-label>
@@ -35,11 +35,11 @@
                     <div class="radio-grupo">
                       <div class="radio">
                         <ion-label class="label-radio">CPF</ion-label>
-                        <ion-radio slot="start" value="CPF" class="item-radio" color="btns"></ion-radio>
+                        <ion-radio slot="start" value="CPF" class="item-radio" color="btns" (click)="radioGroupFisica()"></ion-radio>
                       </div>
                       <div class="radio">
                         <ion-label>CNPJ</ion-label>
-                        <ion-radio slot="start" value="CNPJ" class="item-radio" color="btns" ></ion-radio>
+                        <ion-radio slot="start" value="CNPJ" class="item-radio" color="btns" (click)="radioGroupJuridica()"></ion-radio>
                       </div>
                     </div>
                   </div>
@@ -56,7 +56,7 @@
             <footer>
               <!--Parte responsável pelos termos de uso-->
               <div class="check-termos">
-                <ion-checkbox></ion-checkbox>
+                <ion-checkbox (ionChange)="addValue($event)"></ion-checkbox>
                 <ion-label class="termos-uso-label">Aceito os <span id="open-modal" (click)="setOpen(true)">Termos de uso.*</span> </ion-label>
               </div>
               <!--<ion-button id="open-modal" expand="block">Termos e Condições de Uso</ion-button>-->
