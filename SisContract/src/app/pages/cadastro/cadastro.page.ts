@@ -19,7 +19,7 @@ export class CadastroPage implements OnInit {
 
   form_cadastro: FormGroup;
   documento: string;
-  checkboxes: boolean ;
+  checkboxes: boolean = false ;
 
   constructor(
     public menuCtrl: MenuController,
@@ -44,7 +44,7 @@ export class CadastroPage implements OnInit {
 
   submitForm(): Boolean{
     this.isSubmitted = true;
-    if(!this.form_cadastro.valid){
+    if(!this.form_cadastro.valid || !this.documento || !this.checkboxes){
       this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
@@ -62,6 +62,16 @@ export class CadastroPage implements OnInit {
     this.canDismiss = ev.detail.checked;
   }*/
 
+  addValue(event){
+    if(event.detail.checked){
+      this.checkboxes = true;
+      console.log(this.checkboxes);
+    }else{
+      this.checkboxes = false;
+      console.log(this.checkboxes);
+    }
+  }
+
   isModalOpen = false;
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
@@ -70,32 +80,31 @@ export class CadastroPage implements OnInit {
     this.documento = value;
   }
 
-  docTamanho(){//mudar o login pra email pelo auth
-    if(this.valueCadastro.length == 11){
-      this.documento = 'cpf';
-    }
-    if(this.valueCadastro.length == 14){
-      this.documento = 'cnpj';
-    }
+  radioGroupFisica(){
+    this.documento = "cpf";
     console.log(this.documento);
   }
 
+  radioGroupJuridica(){
+    this.documento = "cnpj";
+    console.log(this.documento);
+  }
 
   cadastrar(){
-    //if(this.documento == 'cpf'){
+    if(this.documento == 'cpf'){
       this._empregadoFBS.cadastroEmpregado(this.form_cadastro.value).then(()=>{
         this.presentAlert("Cadastro", "Sucesso!", "Cadastro do usuário realizado com sucesso!");
         this.form_cadastro.reset();
         this._router.navigate(["/home"]);
       })
       console.log(this.form_cadastro.value);
-      /*}
+      }
       if(this.documento == 'cnpj'){
         this._empresaFBS.cadastroEmpresa(this.form_cadastro.value).then(()=>{
           this.presentAlert("Cadastro", "Sucesso!", "Cadastro da empresa realizado com sucesso!");
           this._router.navigate(["/home"]);
         });
-      }*/
+      }
   }
 
   alterar(){}
