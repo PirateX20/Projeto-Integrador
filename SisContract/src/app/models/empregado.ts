@@ -1,14 +1,13 @@
-import { Usuario } from "../interface/usuario";
 import { Endereco } from "./endereco";
 
-export class Empregado implements Usuario{
+export class Empregado{
     private _id:string;
-    _email: string;
-    _senha: string;
-    _nome: string;
-    _endereco: Endereco;
+    private _email: string;
+    private _senha: string;
+    private _nome: string;
+    private _endereco: Endereco;
     private _areaAtuacao: string;
-    private _cpf: string;
+    private _documento: any;
     private _escolaridade: string;
     private _experiencia: string;
     private _especializacoes: string;
@@ -18,11 +17,11 @@ export class Empregado implements Usuario{
         return this._id;
     }
 
-    constructor(email:string,senha:string,nome:string,cpf:string){
+    constructor(email:string,senha:string,nome:string,documento:any){
         this._email=email;
         this._senha=senha;
         this._nome=nome;
-        this._cpf=cpf;
+        this._documento=documento;
         this._status = "desempregado";
     }
 
@@ -61,11 +60,11 @@ export class Empregado implements Usuario{
         this._areaAtuacao = value;
     }
 
-    public get cpf(): string {
-        return this._cpf;
+    public get documento(): any {
+        return this._documento;
     }
-    public set cpf(value: string) {
-        this._cpf = value;
+    public set documento(value: any) {
+        this._documento = value;
     }
 
     public get escolaridade(): string {
