@@ -30,7 +30,7 @@ export class HomePage implements OnInit{
   }
   
   gotoOfflineMode(){
-    this._route.navigate(["/offline"]);
+    this._route.navigate(["/empresahome"]);
   }
 
   authLogin(){
