@@ -82,12 +82,10 @@ export class CadastroPage implements OnInit {
 
   radioGroupFisica(){
     this.documento = "cpf";
-    console.log(this.documento);
   }
 
   radioGroupJuridica(){
     this.documento = "cnpj";
-    console.log(this.documento);
   }
 
   cadastrar(){
@@ -97,7 +95,6 @@ export class CadastroPage implements OnInit {
         this.form_cadastro.reset();
         this._router.navigate(["/home"]);
       })
-      console.log(this.form_cadastro.value);
       }
       if(this.documento == 'cnpj'){
         this._empresaFBS.cadastroEmpresa(this.form_cadastro.value).then(()=>{
