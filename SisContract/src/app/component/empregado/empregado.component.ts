@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmpregadoComponent implements OnInit {
   public appPages = [
-    { title: 'Home', url: '/folder/Inbox', icon: 'home' },
+    { title: 'Homeeeeeeee', url: '/folder/Inbox', icon: 'home' },
     { title: 'Informações', url: '/folder/Outbox', icon: 'information-circle' },
     { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
     { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },

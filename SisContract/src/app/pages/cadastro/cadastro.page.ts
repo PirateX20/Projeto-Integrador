@@ -35,11 +35,28 @@ export class CadastroPage implements OnInit {
     //Termos de uso
     this.presentingElement = document.querySelector('.ion-page');
     this.form_cadastro = this.formBuilder.group({
-      email: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
       senha: ["", [Validators.required]],
       nome: ["", [Validators.required]],
       documento: ["", [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
     })
+  }
+
+  get email(){
+    return this.form_cadastro.get('email');
+  }
+
+  get senha(){
+    return this.form_cadastro.get('senha');
+  }
+
+  async register(){
+    const empregadoUser = await this._empregadoFBS.registerFB(this.form_cadastro.value);
+    if(empregadoUser){
+      this._router.navigateByUrl('/home',{replaceUrl:true});
+    }else{
+      this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
+    }
   }
 
   submitForm(): Boolean{
@@ -92,8 +109,9 @@ export class CadastroPage implements OnInit {
     if(this.documento == 'cpf'){
       this._empregadoFBS.cadastroEmpregado(this.form_cadastro.value).then(()=>{
         this.presentAlert("Cadastro", "Sucesso!", "Cadastro do usuário realizado com sucesso!");
+        this.register();
         this.form_cadastro.reset();
-        this._router.navigate(["/home"]);
+        this._router.navigateByUrl('/',{replaceUrl:true})
       })
       }
       if(this.documento == 'cnpj'){

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>informacoes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <body>
+    <main class="container">
+      <ion-list color="aqua">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
+        <form [formGroup]="formEdit" (ngSubmit)="submitForm()">
+        <!--
+            <div class="input-field">
+                <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
+                <div class="underline"></div>
+            </div>
+
+            <div class="input-field">
+                <ion-input type="password" placeholder="Senha" formControlName="senha"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="number" placeholder="CFP/CNPJ" formControlName="documento"></ion-input>
+              <div class="underline"></div>
+            </div>
+          -->
+
+            <div class="input-field">
+              <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+              <div class="underline"></div>
+            </div>
+
+
+
+            <footer>
+              <ion-button class="botao-cadastro" color="btns" expand="block" type="submit">Cadastre-se</ion-button>
+            </footer>
+        </form>
+
+      </ion-list>
+    </main>
+  </body>
+</ion-content>

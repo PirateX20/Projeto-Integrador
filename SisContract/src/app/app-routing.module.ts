@@ -1,5 +1,10 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { redirectUnauthorizedTo, redirectLoggedInTo, canActivate } from '@angular/fire/auth-guard';
+
+const redirectLoggedInToHomeEmpregado = () => redirectLoggedInTo(['empregadohome']);
+const redirectLoggedInToHomeEmpresa = () => redirectLoggedInTo(['empresahome']);
+const redirectUnauthorizedToHome = () => redirectLoggedInTo(['']);
 
 const routes: Routes = [
   {
@@ -21,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'empregadohome',
-    loadChildren: () => import('./pages/empregado/home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./pages/empregado/home/home.module').then( m => m.HomePageModule),
   },
   {
     path: 'empresahome',
@@ -30,7 +35,12 @@ const routes: Routes = [
   {
     path: 'empregadopropostas',
     loadChildren: () => import('./pages/empregado/propostas/propostas.module').then( m => m.PropostasPageModule)
+  },
+  {
+    path: 'informacoesemp',
+    loadChildren: () => import('./pages/empregado/informacoes/informacoes.module').then( m => m.InformacoesPageModule)
   }
+
 
 
 ];

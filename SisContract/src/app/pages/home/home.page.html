@@ -3,17 +3,17 @@
     <main class="container">
       <ion-list color="aqua">
         <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
-        <form action="">
+        <form [formGroup]="form_login" (ngSubmit)="submitForm()">
             <div class="input-field">
-                <ion-input name="document" id="document" placeholder="CPF/CNPJ *"  type="number"></ion-input>
+                <ion-input formControlName="email" name="document" id="document" placeholder="CPF/CNPJ *"  type="text"></ion-input>
                 <div class="underline"></div>
             </div>
             <div class="input-field">
-                <ion-input type="password" name="password" id="password" placeholder="Senha *"></ion-input>
+                <ion-input formControlName="senha" type="password" name="password" id="password" placeholder="Senha *"></ion-input>
                 <div class="underline"></div>
             </div>
 
-            <ion-button class="botao-login" color="btns" expand="block" type="submit" (click)="authLogin()">Login</ion-button>
+            <ion-button class="botao-login" color="btns" expand="block" type="submit">Login</ion-button>
         </form>
         <!--
         <form #loginForm="ngForm">

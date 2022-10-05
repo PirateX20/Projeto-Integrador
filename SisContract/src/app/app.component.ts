@@ -5,13 +5,30 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  public appPages = [
-    { title: 'Home', url: '/folder/Inbox', icon: 'home' },
-    { title: 'Informações', url: '/folder/Outbox', icon: 'information-circle' },
-    { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
-    { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
-  ];
+  public appPages :any;
+  public tipo: string = 'f';
   constructor() {
-    //asdasdasds
+
+  }
+
+  ngOnInit(){
+    if(this.tipo=='f'){
+      this.appPages = [
+        { title: 'Home', url: '/folder/Inbox', icon: 'home' },
+        { title: 'Informações', url: '/informacoesemp', icon: 'information-circle' },
+        { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
+        { title: 'Propostas' , url: '/empregadopropostas', icon: 'briefcase'},
+        { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
+      ];
+    }else{
+      if(this.appPages=='j'){
+        this.appPages = [
+          { title: 'Home', url: '/folder/Inbox', icon: 'home' },
+          { title: 'Informações', url: '/informacoesemp', icon: 'information-circle' },
+          { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
+          { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
+        ];
+      }
+    }
   }
 }
