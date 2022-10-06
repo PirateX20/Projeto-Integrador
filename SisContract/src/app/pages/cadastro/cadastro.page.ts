@@ -36,9 +36,9 @@ export class CadastroPage implements OnInit {
     this.presentingElement = document.querySelector('.ion-page');
     this.form_cadastro = this.formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
-      senha: ["", [Validators.required]],
+      senha: ["", [Validators.required, Validators.minLength(6)]],
       nome: ["", [Validators.required]],
-      documento: ["", [Validators.required, Validators.minLength(11), Validators.maxLength(14)]],
+      documento: ["", [Validators.required,Validators.minLength(11), Validators.maxLength(14)/*,Validators.pattern['0-9']*/]],
     })
   }
 
@@ -61,6 +61,7 @@ export class CadastroPage implements OnInit {
 
   submitForm(): Boolean{
     this.isSubmitted = true;
+    console.log("aqui");
     if(!this.form_cadastro.valid || !this.documento || !this.checkboxes){
       this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
       return false;

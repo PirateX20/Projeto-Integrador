@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar color="btns">
+    <ion-title> Configurações</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <body>
+    <main class="container">
+      <ion-list color="aqua">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns" class="iconeSC"></ion-icon><span class="resto">ntract</span></h2>
+        <form>
+            <div class="input-field">
+              <ion-input type="text" placeholder="E-mail"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="password" placeholder="Senha"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input placeholder="CPF"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <footer>
+              <div class="check-termos">
+                <ion-checkbox (ionChange)="addValue($event)"></ion-checkbox>
+                <ion-label class="termos-uso-label">Desejo mudar minhas Informações.</ion-label>
+              </div>
+              <ion-button class="botao-cadastro" color="btns" expand="block" type="submit">Editar Configurações</ion-button>
+            </footer>
+        </form>
+
+      </ion-list>
+    </main>
+  </body>
+
+</ion-content>
