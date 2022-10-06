@@ -5,90 +5,106 @@
         <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
         <form [formGroup]="form_cadastro" (ngSubmit)="submitForm()">
 
-            <div class="input-field">
-                <ion-input type="text" placeholder="E-mail *" formControlName="email"></ion-input>
-                <div class="underline"></div>
-            </div>
-
-            <div class="input-field">
-                <ion-input type="password" placeholder="Senha *" formControlName="senha"></ion-input>
-                <div class="underline"></div>
-            </div>
-
-            <div class="input-field">
-              <ion-input type="text" placeholder="Nome *" formControlName="nome"></ion-input>
+          <div class="input-field">
+              <ion-input type="text" placeholder="E-mail *" formControlName="email"></ion-input>
               <div class="underline"></div>
-            </div>
+          </div>
+          <div *ngIf="(((errorControl.email.touched) || (errorControl.email.dirty))&& errorControl.email.errors)">
+            <span *ngIf="errorControl.email.errors?.required ">Campo Obrigatório!</span>
+            <span *ngIf="errorControl.email.errors?.email"> Campo deve ser do tipo E-mail</span>
+          </div>
 
-            <div class="input-field">
-              <ion-input type="number" placeholder="CFP/CNPJ *" formControlName="documento" [(ngModel)]="valueCadastro"></ion-input>
+          <div class="input-field">
+              <ion-input type="password" placeholder="Senha *" formControlName="senha"></ion-input>
               <div class="underline"></div>
-            </div>
+          </div>
+          <div *ngIf="(((errorControl.senha.touched) || (errorControl.senha.dirty))&& errorControl.senha.errors)">
+            <span *ngIf="errorControl.senha.errors?.required ">Campo Obrigatório!</span>
+            <span *ngIf="errorControl.senha.errors?.minlength"> Campo deve ter no minimo 6 caracteres</span>
+          </div>
 
-            <div>
-              <ion-list>
-                <ion-radio-group value="docs">
-                  <div>
-                    <ion-list-header>
-                      <ion-label>Documento *</ion-label>
-                    </ion-list-header>
-                    <div class="radio-grupo">
-                      <div class="radio">
-                        <ion-label class="label-radio">CPF</ion-label>
-                        <ion-radio slot="start" value="CPF" class="item-radio" color="btns" (click)="radioGroupFisica()"></ion-radio>
-                      </div>
-                      <div class="radio">
-                        <ion-label>CNPJ</ion-label>
-                        <ion-radio slot="start" value="CNPJ" class="item-radio" color="btns" (click)="radioGroupJuridica()"></ion-radio>
-                      </div>
+          <div class="input-field">
+            <ion-input type="text" placeholder="Nome *" formControlName="nome"></ion-input>
+            <div class="underline"></div>
+          </div>
+          <div *ngIf="(((errorControl.nome.touched) || (errorControl.nome.dirty))&& errorControl.nome.errors)">
+            <span *ngIf="errorControl.nome.errors?.required ">Campo Obrigatório!</span>
+          </div>
+
+          <div class="input-field">
+            <ion-input placeholder="CFP/CNPJ *" formControlName="documento"></ion-input>
+            <div class="underline"></div>
+          </div>
+          <div *ngIf="(((errorControl.documento.touched) || (errorControl.documento.dirty))&& errorControl.documento.errors)">
+            <span *ngIf="errorControl.documento.errors?.required ">Campo Obrigatório!</span>
+            <!--<span *ngIf="errorControl.documento.errors?.pattern"> Campo do tipo numérico</span>-->
+            <span *ngIf="errorControl.documento.errors?.minlength"> Campo deve ter pelo menos 11 digitos</span>
+            <span *ngIf="errorControl.documento.errors?.maxlength"> Campo deve ter no máximo 14 digitos</span>
+          </div>
+
+          <div>
+            <ion-list>
+              <ion-radio-group value="docs">
+                <div>
+                  <ion-list-header>
+                    <ion-label>Documento *</ion-label>
+                  </ion-list-header>
+                  <div class="radio-grupo">
+                    <div class="radio">
+                      <ion-label class="label-radio">CPF</ion-label>
+                      <ion-radio slot="start" value="CPF" class="item-radio" color="btns" (click)="radioGroupFisica()"></ion-radio>
+                    </div>
+                    <div class="radio">
+                      <ion-label>CNPJ</ion-label>
+                      <ion-radio slot="start" value="CNPJ" class="item-radio" color="btns" (click)="radioGroupJuridica()"></ion-radio>
                     </div>
                   </div>
-                  
-                </ion-radio-group>
-              </ion-list>
-              
+                </div>
+                
+              </ion-radio-group>
+            </ion-list>
+            
 
-              <!--<ion-select placeholder="Escolha o tipo de documento">
-                <ion-select-option value="CPF" >CPF</ion-select-option>
-                <ion-select-option value="CNPJ">CNPJ</ion-select-option>
-              </ion-select>-->
+            <!--<ion-select placeholder="Escolha o tipo de documento">
+              <ion-select-option value="CPF" >CPF</ion-select-option>
+              <ion-select-option value="CNPJ">CNPJ</ion-select-option>
+            </ion-select>-->
+          </div>
+          <footer>
+            <!--Parte responsável pelos termos de uso-->
+            <div class="check-termos">
+              <ion-checkbox (ionChange)="addValue($event)"></ion-checkbox>
+              <ion-label class="termos-uso-label">Aceito os <span id="open-modal" (click)="setOpen(true)">Termos de uso.*</span> </ion-label>
             </div>
-            <footer>
-              <!--Parte responsável pelos termos de uso-->
-              <div class="check-termos">
-                <ion-checkbox (ionChange)="addValue($event)"></ion-checkbox>
-                <ion-label class="termos-uso-label">Aceito os <span id="open-modal" (click)="setOpen(true)">Termos de uso.*</span> </ion-label>
-              </div>
-              <!--<ion-button id="open-modal" expand="block">Termos e Condições de Uso</ion-button>-->
-              <ion-modal [isOpen]="isModalOpen">
-                <ng-template>
-                  <ion-header>
-                    <ion-toolbar color="btns">
-                      <ion-title>Termos de Uso</ion-title>
-                      <ion-buttons slot="end">
-                        <ion-button (click)="setOpen(false)">Fechar</ion-button>
-                      </ion-buttons>
-                    </ion-toolbar>
-                  </ion-header>
-                  <ion-content class="ion-padding">
-                    <p class="ion-padding-horizontal">
-                      Ao usar nossa aplicação você aceita o uso dos seus dados para mero fim de funcionamento,
-                      atualmente esses dados não recebem proteção contra vazamentos, tão pouco são fornecidos a
-                      terceiros.
-                      Esse app é de uso gratuito e colaborativo desde que em respeito as seguintes regras:
-                    </p>
-                    <ul>
-                      <li>Não utilização do código (mesmo que modificado) sem a devida citação</li>
-                      <li>Usar em respeito a outros usuários que possam haver na plataforma (ficticios ou não)
-                        com o caso de assumir as devidas responsabilidades em caso de contravenção penal</li>
-                    </ul>
-                    <p class="empresa-termos">SisContract Coorporation©</p>
-                  </ion-content>
-                </ng-template>
-              </ion-modal>
-
-              <ion-button class="botao-cadastro" color="btns" expand="block" type="submit">Cadastre-se</ion-button>
-            </footer>
+            <!--<ion-button id="open-modal" expand="block">Termos e Condições de Uso</ion-button>-->
+            <ion-modal [isOpen]="isModalOpen">
+              <ng-template>
+                <ion-header>
+                  <ion-toolbar color="btns">
+                    <ion-title>Termos de Uso</ion-title>
+                    <ion-buttons slot="end">
+                      <ion-button (click)="setOpen(false)">Fechar</ion-button>
+                    </ion-buttons>
+                  </ion-toolbar>
+                </ion-header>
+                <ion-content class="ion-padding">
+                  <p class="ion-padding-horizontal">
+                    Ao usar nossa aplicação você aceita o uso dos seus dados para mero fim de funcionamento,
+                    atualmente esses dados não recebem proteção contra vazamentos, tão pouco são fornecidos a
+                    terceiros.
+                    Esse app é de uso gratuito e colaborativo desde que em respeito as seguintes regras:
+                  </p>
+                  <ul>
+                    <li>Não utilização do código (mesmo que modificado) sem a devida citação</li>
+                    <li>Usar em respeito a outros usuários que possam haver na plataforma (ficticios ou não)
+                      com o caso de assumir as devidas responsabilidades em caso de contravenção penal</li>
+                  </ul>
+                  <p class="empresa-termos">SisContract Coorporation©</p>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+            <ion-button class="botao-cadastro" color="btns" expand="block" type="submit">Cadastre-se</ion-button>
+          </footer>
         </form>
 
       </ion-list>

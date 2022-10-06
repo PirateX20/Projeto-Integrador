@@ -1,6 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>informacoes</ion-title>
+<ion-header class="tool-bar">
+  <ion-toolbar color="btns">
+    <ion-title> Editar informacoes</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -8,8 +16,8 @@
   <body>
     <main class="container">
       <ion-list color="aqua">
-        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
-        <form [formGroup]="formEdit" (ngSubmit)="submitForm()">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns" class="iconeSC"></ion-icon><span class="resto">ntract</span></h2>
+        <form (ngSubmit)="submitForm()">
         <!--
             <div class="input-field">
                 <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
@@ -27,11 +35,29 @@
           -->
 
             <div class="input-field">
-              <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
+              <ion-input type="text" placeholder="Nome"></ion-input>
               <div class="underline"></div>
             </div>
-
-
+            <div class="input-field">
+              <ion-input type="text" placeholder="Endereço"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="text" placeholder="Area de Atuação"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="text" placeholder="Escolaridade"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="text" placeholder="Experiência"></ion-input>
+              <div class="underline"></div>
+            </div>
+            <div class="input-field">
+              <ion-input type="text" placeholder="Especializações"></ion-input>
+              <div class="underline"></div>
+            </div>
 
             <footer>
               <ion-button class="botao-cadastro" color="btns" expand="block" type="submit">Cadastre-se</ion-button>

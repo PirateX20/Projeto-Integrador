@@ -14,19 +14,19 @@ export class AppComponent {
   ngOnInit(){
     if(this.tipo=='f'){
       this.appPages = [
-        { title: 'Home', url: '/folder/Inbox', icon: 'home' },
-        { title: 'Informações', url: '/informacoesemp', icon: 'information-circle' },
+        { title: 'Home', url: '/empregadohome', icon: 'home' },
+        { title: 'Informações', url: '/empregadoinformacoes', icon: 'information-circle' },
         { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
         { title: 'Propostas' , url: '/empregadopropostas', icon: 'briefcase'},
-        { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
+        { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
       ];
     }else{
       if(this.appPages=='j'){
         this.appPages = [
           { title: 'Home', url: '/folder/Inbox', icon: 'home' },
-          { title: 'Informações', url: '/informacoesemp', icon: 'information-circle' },
+          { title: 'Informações', url: '/empregadoinformacoes', icon: 'information-circle' },
           { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
-          { title: 'Configurações', url: '/folder/Archived', icon: 'settings' },
+          { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
         ];
       }
     }

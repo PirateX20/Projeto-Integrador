@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>propostas</ion-title>
+  <ion-toolbar color="btns">
+    <ion-title> Propostas</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
+
+  <ion-list>
+    <ion-item *ngFor="let result of results">
+      <ion-buttons slot="end">
+        <ion-button (click)="ver(result)">
+          <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-label>{{ result }}</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
