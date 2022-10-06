@@ -20,15 +20,15 @@ export class AppComponent {
         { title: 'Propostas' , url: '/empregadopropostas', icon: 'briefcase'},
         { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
       ];
-    }else{
-      if(this.appPages=='j'){
-        this.appPages = [
-          { title: 'Home', url: '/folder/Inbox', icon: 'home' },
-          { title: 'Informações', url: '/empregadoinformacoes', icon: 'information-circle' },
-          { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
-          { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
-        ];
-      }
     }
+    if(this.appPages=='j'){
+      this.appPages = [
+        { title: 'Home', url: '/empresahome', icon: 'home' },
+        { title: 'Informações', url: '/empresainformacoes', icon: 'information-circle' },
+        { title: 'Currículos', url: '/empresaCurriculos', icon: 'reader' },
+        { title: 'Configurações', url: '/empresaconfigs', icon: 'settings' },
+      ];
+    }
+    
   }
 }

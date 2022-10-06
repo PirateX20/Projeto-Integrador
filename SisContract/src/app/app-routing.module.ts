@@ -43,7 +43,20 @@ const routes: Routes = [
   {
     path: 'empregadoconfigs',
     loadChildren: () => import('./pages/empregado/configs/configs.module').then( m => m.ConfigsPageModule)
+  },
+  {
+    path: 'empresainformacoes',
+    loadChildren: () => import('./pages/empresa/informacoes/informacoes.module').then( m => m.InformacoesPageModule)
+  },
+  {
+    path: 'empresaCurriculos',
+    loadChildren: () => import('./pages/empresa/curriculos/curriculos.module').then( m => m.CurriculosPageModule)
+  },
+  {
+    path: 'empresaconfigs',
+    loadChildren: () => import('./pages/empresa/configs/configs.module').then( m => m.ConfigsPageModule)
   }
+
 
 
 

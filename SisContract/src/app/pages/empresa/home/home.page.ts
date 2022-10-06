@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { EmpresaService } from 'src/app/services/empresafb.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePage implements OnInit {
 
-  constructor() { }
+  constructor(private _empresaFBS: EmpresaService,private _router: Router) { }
 
   ngOnInit() {
+  }
+
+  async logout(){
+    await this._empresaFBS.logout();
+    this._router.navigateByUrl('/',{replaceUrl:true});
   }
 
 }
