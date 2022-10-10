@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth, getAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
-import { AppComponent } from 'src/app/app.component';
-import { Empregado } from 'src/app/models/empregado';
+import { getAuth } from 'firebase/auth';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.page.html',
-  styleUrls: ['./home.page.scss'],
+  selector: 'app-curriculos',
+  templateUrl: './curriculos.page.html',
+  styleUrls: ['./curriculos.page.scss'],
 })
-export class HomePage implements OnInit {
+export class CurriculosPage implements OnInit {
   auth = getAuth();
   user = this.auth.currentUser;
-  usuario!: Empregado[];
-  e:Empregado[];
-  nome!:any;
-  oemail:any;
-  constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService,private _router: Router, private _auth: Auth, ) { }
+  constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService, private _router: Router) { }
 
   ngOnInit() {
     this.openUser();
@@ -35,11 +29,8 @@ export class HomePage implements OnInit {
       const email = this.user.email
       const userId = this.user.uid
       console.log(email);
-      this.oemail = userId;
-
+      //this.oemail = email;
     }
   }
-
-  
 
 }

@@ -17,7 +17,7 @@
     <main class="container">
       <ion-list color="aqua">
         <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns" class="iconeSC"></ion-icon><span class="resto">ntract</span></h2>
-        <form (ngSubmit)="submitForm()">
+        <form [formGroup]="formEdit" (ngSubmit)="submitForm()">
         <!--
             <div class="input-field">
                 <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
@@ -35,27 +35,27 @@
           -->
 
             <div class="input-field">
-              <ion-input type="text" placeholder="Nome"></ion-input>
+              <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Endereço"></ion-input>
+              <ion-input type="text" placeholder="Endereço" formControlName="endereco"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Area de Atuação"></ion-input>
+              <ion-input type="text" placeholder="Area de Atuação" formControlName="areaAtuacao"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Escolaridade"></ion-input>
+              <ion-input type="text" placeholder="Escolaridade" formControlName="escolaridade"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Experiência"></ion-input>
+              <ion-input type="text" placeholder="Experiência" formControlName="experiencia"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Especializações"></ion-input>
+              <ion-input type="text" placeholder="Especializações" formControlName="especializacoes"></ion-input>
               <div class="underline"></div>
             </div>
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+import { getAuth } from 'firebase/auth';
 import { EmpresaService } from 'src/app/services/empresafb.service';
 
 @Component({
@@ -9,9 +11,14 @@ import { EmpresaService } from 'src/app/services/empresafb.service';
 })
 export class HomePage implements OnInit {
 
-  constructor(private _empresaFBS: EmpresaService,private _router: Router) { }
+  idCurrent: any;
+  auth = getAuth();
+  user = this.auth.currentUser;
+  constructor(public menuCtrl: MenuController,private _empresaFBS: EmpresaService,private _router: Router) { }
 
   ngOnInit() {
+    this.openUser();
+    this.menuCtrl.enable(true);
   }
 
   async logout(){
@@ -19,4 +26,12 @@ export class HomePage implements OnInit {
     this._router.navigateByUrl('/',{replaceUrl:true});
   }
 
+  openUser(){
+    if(this.user !== null){
+      const email = this.user.email
+      const userId = this.user.uid
+      this.idCurrent= userId;
+      console.log(userId);
+    }
+  }
 }

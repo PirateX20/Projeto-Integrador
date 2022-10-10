@@ -3,7 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Empresa } from '../models/empresa';
-import { Auth, signOut } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,8 @@ import { Auth, signOut } from '@angular/fire/auth';
 export class EmpresaService {
 
   private PATH : string = "empresa";
+  auth = getAuth();
+  user = this.auth.currentUser;
 
   constructor(private _auth: Auth,private _angularFirestore: AngularFirestore, private _angularFireStorage: AngularFireStorage) { }
 
@@ -32,6 +34,41 @@ export class EmpresaService {
       endereco:empresa.endereco,
       cargos: empresa.cargos
     });
+  }
+
+  updateInfos(empresa:Empresa,id:string){
+    return this._angularFirestore.collection(this.PATH).doc(id).update({
+      nome: empresa.nome,
+      endereco:empresa.endereco,
+      cargos: empresa.cargos
+    })
+  }
+
+  updateConfig(empresa:Empresa,id:string){
+    return this._angularFirestore.collection(this.PATH).doc(id).update({
+      email:empresa.email,
+      senha: empresa.senha,
+      documeno: empresa.documento
+    })
+  }
+
+  async loginFB(email:any,senha:any){
+    this.auth = getAuth();
+    return signInWithEmailAndPassword(this.auth,email,senha)
+  }
+
+  async registerFB(empresa:Empresa){
+    const ususrio = await createUserWithEmailAndPassword(this.auth,empresa.email,empresa.senha);
+    this._angularFirestore.collection(this.PATH).doc(ususrio.user.uid).set({
+      email:empresa.email,
+      senha:empresa.senha,
+      nome:empresa.nome,
+      documento:empresa.documento,
+    })
+  }
+
+  deleteEmpresa(id:any){
+    return this._angularFirestore.collection(this.PATH).doc(id).delete();
   }
 
   logout(){

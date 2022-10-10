@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
+import { getAuth } from 'firebase/auth';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
 
@@ -10,7 +11,9 @@ import { EmpresaService } from 'src/app/services/empresafb.service';
   styleUrls: ['./curriculos.page.scss'],
 })
 export class CurriculosPage implements OnInit {
-
+  idCurrent: any;
+  auth = getAuth();
+  user = this.auth.currentUser;
   constructor(public menuCtrl: MenuController,
     private alertController: AlertController,
     private _empregadoFBS: EmpregadoService,
@@ -18,6 +21,8 @@ export class CurriculosPage implements OnInit {
     private _router : Router) { }
 
   ngOnInit() {
+    this.openUser();
+    this.menuCtrl.enable(true);
   }
 
   public data = ['Amsterdam', 'Buenos Aires', 'Cairo', 'Geneva', 'Hong Kong', 'Istanbul', 'London', 'Madrid', 'New York', 'Panama City'];
@@ -35,5 +40,14 @@ export class CurriculosPage implements OnInit {
 
   ver(algo:any){
     console.log(algo);
+  }
+
+  openUser(){
+    if(this.user !== null){
+      const email = this.user.email
+      const userId = this.user.uid
+      this.idCurrent= userId;
+      console.log(userId);
+    }
   }
 }

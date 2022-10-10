@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { getAuth } from 'firebase/auth';
+import { Empregado } from './models/empregado';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -7,7 +10,8 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public appPages :any;
   public tipo: string = 'f';
-  constructor() {
+  empregado:Empregado;
+  constructor(private _router:Router) {
 
   }
 
@@ -16,7 +20,7 @@ export class AppComponent {
       this.appPages = [
         { title: 'Home', url: '/empregadohome', icon: 'home' },
         { title: 'Informações', url: '/empregadoinformacoes', icon: 'information-circle' },
-        { title: 'Currículos', url: '/folder/Favorites', icon: 'reader' },
+        { title: 'Currículos', url: '/empregadocurriculos', icon: 'reader' },
         { title: 'Propostas' , url: '/empregadopropostas', icon: 'briefcase'},
         { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
       ];
@@ -31,4 +35,11 @@ export class AppComponent {
     }
     
   }
+
+  redirect(url:any){
+    if(url=="/empregadoinformacoes"){
+      this._router.navigateByUrl("/empregadoinformacoes",{state:{obj:this.empregado}})
+    }
+  }
+
 }

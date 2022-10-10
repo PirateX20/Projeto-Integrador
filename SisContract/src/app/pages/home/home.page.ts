@@ -41,6 +41,10 @@ export class HomePage implements OnInit{
     })
   }
 
+  get errorControl(){
+    return this.form_login.controls;
+  }
+
   gotoCadastrar(){
     this._route.navigate(["/cadastro"]);
   }
@@ -61,12 +65,16 @@ export class HomePage implements OnInit{
   }
 
   async authLogin(){
-    const empregadoUser = await this._empregadoFBS.loginFB(this.form_login.value);
-    if(empregadoUser){
-      this._router.navigateByUrl('empregadohome',{replaceUrl:true});
-    }else{
+    this._empregadoFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
+      const uuser = credenciais.user;
+      console.log(uuser);
+      this._router.navigate(['/empregadohome']);
+    }).catch((err)=>{
+      console.log(err);
       this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
-    }
+    })
+
+    
   }
 
   async presentAlert(header: string, subHeader: string, message: string) {
