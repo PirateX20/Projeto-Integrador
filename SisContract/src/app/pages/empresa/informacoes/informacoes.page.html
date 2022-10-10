@@ -17,18 +17,18 @@
     <main class="container">
       <ion-list color="aqua">
         <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns" class="iconeSC"></ion-icon><span class="resto">ntract</span></h2>
-        <form (ngSubmit)="submitForm()">
+        <form [formGroup]="formEdit" (ngSubmit)="submitForm()">
 
             <div class="input-field">
-              <ion-input type="text" placeholder="Nome"></ion-input>
+              <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Endereço"></ion-input>
+              <ion-input type="text" placeholder="Endereço" formControlName="endereco"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="text" placeholder="Cargos Ofertados"></ion-input>
+              <ion-input type="text" placeholder="Cargos Ofertados" formControlName="cargos"></ion-input>
               <div class="underline"></div>
             </div>
 

@@ -55,7 +55,12 @@ const routes: Routes = [
   {
     path: 'empresaconfigs',
     loadChildren: () => import('./pages/empresa/configs/configs.module').then( m => m.ConfigsPageModule)
+  },
+  {
+    path: 'empregadocurriculos',
+    loadChildren: () => import('./pages/empregado/curriculos/curriculos.module').then( m => m.CurriculosPageModule)
   }
+
 
 
 

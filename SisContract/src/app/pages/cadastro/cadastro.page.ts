@@ -51,9 +51,10 @@ export class CadastroPage implements OnInit {
   }
 
   async register(){
-    const empregadoUser = await this._empregadoFBS.registerFB(this.form_cadastro.value);
-    if(empregadoUser){
-      this._router.navigateByUrl('/home',{replaceUrl:true});
+    let registo = this._empregadoFBS.registerFB(this.form_cadastro.value)
+    if(registo){
+      this.presentAlert('SisContract','cadastrou','aaaaaaa.');
+      this._router.navigate(['/home']);
     }else{
       this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
     }
@@ -67,7 +68,8 @@ export class CadastroPage implements OnInit {
       return false;
     }else{
       //this.docTamanho();
-      this.cadastrar();
+      this.register();
+      //this.cadastrar();
     }
   }
 
