@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { getAuth } from 'firebase/auth';
 import { Empregado } from './models/empregado';
+import { EmpregadoService } from './services/empregadofb.service';
+import { EmpresaService } from './services/empresafb.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -10,8 +13,12 @@ import { Empregado } from './models/empregado';
 export class AppComponent {
   public appPages :any;
   public tipo: string = 'f';
-  empregado:Empregado;
-  constructor(private _router:Router) {
+  empregado : Empregado;
+  constructor(
+    private _router:Router,
+    private _empregadoFBS : EmpregadoService,
+    private _empresaFBS : EmpresaService,
+  ) {
 
   }
 
@@ -42,4 +49,9 @@ export class AppComponent {
     }
   }
 
+  async logout(){
+    await this._empregadoFBS.logout();
+    await this._empresaFBS.logout();
+    this._router.navigateByUrl('/',{replaceUrl:true});
+  }
 }

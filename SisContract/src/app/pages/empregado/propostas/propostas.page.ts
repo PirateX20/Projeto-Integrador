@@ -13,10 +13,12 @@ import { EmpregadoService } from 'src/app/services/empregadofb.service';
 export class PropostasPage implements OnInit {
   auth = getAuth();
   user = this.auth.currentUser;
-  constructor(public menuCtrl: MenuController,
+  constructor(
+    public menuCtrl: MenuController,
     private alertController: AlertController,
     private _empregadoFBS: EmpregadoService,
-    private _router : Router) { }
+    private _router : Router
+  ) { }
 
   ngOnInit() {
     this.openUser();
@@ -29,11 +31,6 @@ export class PropostasPage implements OnInit {
   handleChange(event) {
     const query = event.target.value.toLowerCase();
     this.results = this.data.filter(d => d.toLowerCase().indexOf(query) > -1);
-  }
-
-  async logout(){
-    await this._empregadoFBS.logout();
-    this._router.navigateByUrl('/',{replaceUrl:true});
   }
 
   ver(algo:any){
