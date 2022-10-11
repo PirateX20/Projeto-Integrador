@@ -40,11 +40,6 @@ export class InformacoesPage implements OnInit {
     })
   }
 
-  async logout(){
-    await this._empregadoFBS.logout();
-    this._router.navigateByUrl('/',{replaceUrl:true});
-  }
-
   submitForm(): Boolean{
     this.isSubmitted = true;
     if(!this.formEdit.valid){

@@ -33,11 +33,6 @@ export class CurriculosPage implements OnInit {
     this.results = this.data.filter(d => d.toLowerCase().indexOf(query) > -1);
   }
 
-  async logout(){
-    await this._empresaFBS.logout();
-    this._router.navigateByUrl('/',{replaceUrl:true});
-  }
-
   ver(algo:any){
     console.log(algo);
   }

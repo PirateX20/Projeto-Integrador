@@ -45,11 +45,6 @@ export class ConfigsPage implements OnInit {
     }
   }
 
-  async logout(){
-    await this._empresaFBS.logout();
-    this._router.navigateByUrl('/',{replaceUrl:true});
-  }
-
   addValue(event){
     if(event.detail.checked){
       this.checkboxes = true;

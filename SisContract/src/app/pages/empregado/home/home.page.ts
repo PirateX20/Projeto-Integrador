@@ -25,11 +25,6 @@ export class HomePage implements OnInit {
     this.menuCtrl.enable(true);
   }
 
-  async logout(){
-    await this._empregadoFBS.logout();
-    this._router.navigateByUrl('/',{replaceUrl:true});
-  }
-
   openUser(){
     if(this.user !== null){
       const email = this.user.email
