@@ -13,6 +13,7 @@ import { EmpregadoService } from 'src/app/services/empregadofb.service';
 })
 export class HomePage implements OnInit {
   auth = getAuth();
+  aaa:any
   user = this.auth.currentUser;
   usuario!: Empregado[];
   e:Empregado[];
@@ -31,7 +32,11 @@ export class HomePage implements OnInit {
       const userId = this.user.uid
       console.log(email);
       this.oemail = userId;
-
+      this._empregadoFBS.getEmpregado(this.oemail).subscribe(res=>{
+        this.aaa = res;
+        console.log(this.aaa.nome);
+      });
+      
     }
   }
 

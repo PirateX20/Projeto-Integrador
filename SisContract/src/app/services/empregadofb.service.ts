@@ -14,8 +14,6 @@ import { collectionData } from '@angular/fire/firestore';
 })
 export class EmpregadoService {
   private PATH: string = "empregado";
-  empregado: Observable<any[]>;
-  ids: BehaviorSubject<any>;
   auth = getAuth();
   user = this.auth.currentUser;
 
