@@ -7,7 +7,6 @@ export class Entrevista {
     constructor(idEmpresa:string,idEmpregado:string,idEntrevista:string,dataEntrevista:Date){
         this._idEmpresa=idEmpresa;
         this._idEmpregado=idEmpregado;
-        this._idEntrevista=idEntrevista;
         this._dataEntrevista=dataEntrevista;
     }
 

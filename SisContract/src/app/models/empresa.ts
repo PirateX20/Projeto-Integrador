@@ -1,11 +1,8 @@
-import { Endereco } from "./endereco";
-
 export class Empresa{
     private _id:string;
     private _email: string;
     private _senha: string;
     private _nome: string;
-    private _endereco: any;
     private _documento: any;
     private _cargos: string;
 
@@ -39,13 +36,6 @@ export class Empresa{
     }
     public set nome(value: string) {
         this._nome = value;
-    }
-
-    public get endereco(): any {
-        return this._endereco;
-    }
-    public set endereco(value: any) {
-        this._endereco = value;
     }
 
     public get documento(): any {

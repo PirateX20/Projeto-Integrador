@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './home.page';
-import { EmpregadoComponentModule } from 'src/app/component/empregado/empregado.component.module';
 
 @NgModule({
   imports: [
@@ -15,7 +14,6 @@ import { EmpregadoComponentModule } from 'src/app/component/empregado/empregado.
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    EmpregadoComponentModule
   ],
   declarations: [HomePage]
 })
