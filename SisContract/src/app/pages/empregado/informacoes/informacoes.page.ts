@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { getDoc, getFirestore } from '@angular/fire/firestore';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAdditionalUserInfo, getAuth } from 'firebase/auth';
@@ -16,8 +16,9 @@ import { EmpregadoService } from 'src/app/services/empregadofb.service';
 export class InformacoesPage implements OnInit {
   isSubmitted: boolean;
   formEdit: FormGroup;
-  empregado:Empregado;
+  empregado:any;
   idCurrent: any;
+  e:Empregado;
   auth = getAuth();
   user = this.auth.currentUser;
 
@@ -70,10 +71,18 @@ export class InformacoesPage implements OnInit {
 
   openUser(){
     if(this.user !== null){
-      const email = this.user.email
       const userId = this.user.uid
-      this.idCurrent= userId;
-      console.log(userId);
+      this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
+        this.empregado = res;
+        this.e.nome = this.empregado.nome;
+        this.e.endereco = this.empregado.endereco;
+        this.e.areaAtuacao = this.empregado.areaAtuacao;
+        this.e.escolaridade = this.empregado.escolaridade;
+        this.e.experiencia = this.empregado.experiencia;
+        this.e.especializacoes = this.empregado.especializacoes;
+        
+        console.log(this.empregado.nome);
+      });
     }
   }
 

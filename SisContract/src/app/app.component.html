@@ -11,9 +11,10 @@
             </ion-item>
           </ion-menu-toggle>
 
-          <ion-button (click)="logout()">
-            <ion-icon slot="icon-only" name="log-out"></ion-icon>
-          </ion-button>
+          <ion-item (click)="logout()" lines="none" detail="false">
+            <ion-icon slot="start" name="log-out-sharp"></ion-icon>
+            <ion-label>LogOut</ion-label>
+          </ion-item>
           
         </ion-list>
       </ion-content>
