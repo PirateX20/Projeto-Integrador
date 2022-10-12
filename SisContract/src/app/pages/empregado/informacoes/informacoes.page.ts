@@ -33,7 +33,6 @@ export class InformacoesPage implements OnInit {
     this.menuCtrl.enable(true);
     this.formEdit = this.formBuilder.group({
       nome:[""],
-      endereco:[""],
       areaAtuacao:[""],
       escolaridade: [""],
       experiencia:[""],
@@ -75,7 +74,6 @@ export class InformacoesPage implements OnInit {
       this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
         this.empregado = res;
         this.e.nome = this.empregado.nome;
-        this.e.endereco = this.empregado.endereco;
         this.e.areaAtuacao = this.empregado.areaAtuacao;
         this.e.escolaridade = this.empregado.escolaridade;
         this.e.experiencia = this.empregado.experiencia;

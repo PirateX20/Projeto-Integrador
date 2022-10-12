@@ -28,7 +28,6 @@ export class InformacoesPage implements OnInit {
     this.menuCtrl.enable(true);
     this.formEdit = this.formBuilder.group({
       nome:[""],
-      endereco:[""],
       cargos:[""]
     })
 

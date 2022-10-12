@@ -2,15 +2,15 @@ import { Empregado } from "./empregado";
 import { Entrevista } from "./entrevista";
 
 export class Contratacao{
-    private _entrevista: Entrevista;
+    private _entrevista: any;
     private _idContratacao: string;
     private _dataContrata: Date;
     private _dataDemissao: Date;
-    private _empregado: Empregado;
+    private _empregado: any;
 
-    constructor(entrevista:Entrevista,idContratacao:string,dataContrata:Date){
+    constructor(entrevista:any,idEmpregado:string,dataContrata:Date){
         this._entrevista=entrevista;
-        this._idContratacao=idContratacao;
+        this._empregado=idEmpregado;
         this.dataContrata=dataContrata;
     }
 
@@ -18,10 +18,10 @@ export class Contratacao{
         return this._idContratacao;
     }
 
-    public get entrevista(): Entrevista {
+    public get entrevista(): any {
         return this._entrevista;
     }
-    public set entrevista(value: Entrevista) {
+    public set entrevista(value: any) {
         this._entrevista = value;
     }
 
@@ -39,18 +39,11 @@ export class Contratacao{
         this._dataDemissao = value;
     }
 
-    public get empregado(): Empregado {
+    public get empregado(): any {
         return this._empregado;
     }
-    public set empregado(value: Empregado) {
+    public set empregado(value: any) {
         this._empregado = value;
     }
 
-    mudaStatus(){
-        if((this._entrevista.idEmpregado===this._empregado.id)&&(this._empregado.status=="desempregado")){
-            this._empregado.status = "contratado";
-        }else if((this._entrevista.idEmpregado===this._empregado.id)&&(this._empregado.status=="contratado")){
-            this._empregado.status = "desempregado";
-        }
-    }
 }
