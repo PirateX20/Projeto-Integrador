@@ -59,7 +59,16 @@ const routes: Routes = [
   {
     path: 'empregadocurriculos',
     loadChildren: () => import('./pages/empregado/curriculos/curriculos.module').then( m => m.CurriculosPageModule)
+  },
+  {
+    path: 'empregadologin',
+    loadChildren: () => import('./pages/empregado/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
+    path: 'empresalogin',
+    loadChildren: () => import('./pages/empresa/login/login.module').then( m => m.LoginPageModule)
   }
+
 
 
 

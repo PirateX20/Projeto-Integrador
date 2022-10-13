@@ -1,0 +1,39 @@
+<ion-content>
+  <body>
+    <main class="container">
+      <ion-list color="aqua">
+        <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns"></ion-icon><span class="resto">ntract</span></h2>
+        <form [formGroup]="form_login" (ngSubmit)="submitForm()">
+            <div class="input-field">
+                <ion-input formControlName="email" name="document" id="email" placeholder="E-Mail *"  type="text"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div *ngIf="(((errorControl.email.touched) || (errorControl.email.dirty))&& errorControl.email.errors)">
+              <span *ngIf="errorControl.email.errors?.required ">Campo Obrigatório!</span>
+              <span *ngIf="errorControl.email.errors?.email"> Campo deve ser do tipo E-mail</span>
+            </div>
+
+            <div class="input-field">
+                <ion-input formControlName="senha" type="password" name="password" id="password" placeholder="Senha *"></ion-input>
+                <div class="underline"></div>
+            </div>
+            <div class="padding-input-to-div" *ngIf="(((errorControl.senha.touched) || (errorControl.senha.dirty))&& errorControl.senha.errors)">
+              <span *ngIf="errorControl.senha.errors?.required ">Campo Obrigatório!</span>
+            </div>
+            <ion-button class="botao-login" color="btns" expand="block" type="submit">Login</ion-button>
+        </form>
+        <footer>
+          <p class="footer-text">Novo no SisContract?</p>
+          <ion-button 
+            class="botao-cadastro" 
+            color="btns" 
+            expand="block" 
+            type="submit" 
+            (click)="gotoCadastrar()">
+            Cadastre-se
+          </ion-button>
+        </footer>
+      </ion-list>
+    </main>
+  </body>
+</ion-content>

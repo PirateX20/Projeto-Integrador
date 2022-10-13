@@ -17,64 +17,27 @@ export class HomePage implements OnInit{
     private _route : Router,
     private activatedRoute: ActivatedRoute, 
     public menuCtrl: MenuController,
-    private _auth : Auth,
-    private _empregadoFBS : EmpregadoService,
-    private _empresaFBS : EmpresaService,
-    private alertController: AlertController,
-    private formBuilder : FormBuilder,
-    private _router: Router) {
+    private alertController: AlertController) {
   }
-  cpf_cnpj: number;
-  isSubmitted: boolean;
-  decimal_Section: string = '.';
-  confirm_digit: string = '-';
-  second_partCNPJ: string = '/';
-  form_login: FormGroup;
-
-  //login por cpf e cnpj, ver quantidade de numeros ... cpf 11 - cnpj 14
 
   ngOnInit() {
     this.menuCtrl.enable(false);
-    this.form_login = this.formBuilder.group({
-      email: ["", [Validators.required, Validators.email]],
-      senha: ["", [Validators.required]],
-    })
-  }
-
-  get errorControl(){
-    return this.form_login.controls;
   }
 
   gotoCadastrar(){
     this._route.navigate(["/cadastro"]);
   }
+
+  gotoEmpregado(){
+    this._route.navigate(["/empregadologin"]);
+  }
+
+  gotoEmpresa(){
+    this._route.navigate(["/empresalogin"]);
+  }
   
   gotoOfflineMode(){
     this._route.navigate(["/empregadohome"]);
-  }
-
-  submitForm(){
-    this.isSubmitted = true;
-    if(!this.form_login.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
-      return false;
-    }else{
-      //this.docTamanho();
-      this.authLogin();
-    }
-  }
-
-  async authLogin(){
-    this._empregadoFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
-      const uuser = credenciais.user;
-      console.log(uuser);
-      this._router.navigate(['/empregadohome']);
-    }).catch((err)=>{
-      console.log(err);
-      this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
-    })
-
-    
   }
 
   async presentAlert(header: string, subHeader: string, message: string) {
