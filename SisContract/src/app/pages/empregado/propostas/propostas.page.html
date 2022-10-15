@@ -16,13 +16,13 @@
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
-          <ion-item *ngFor="let result of results">
+          <ion-item *ngFor="let empresa of empresas">
             <ion-buttons slot="end">
-              <ion-button (click)="ver(result)">
+              <ion-button (click)="ver(empresa)">
                 <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
-            <ion-label>{{ result }}</ion-label>
+            <ion-label>{{ empresa.nome }}</ion-label>
           </ion-item>
         </div>
       </ion-accordion>

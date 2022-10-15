@@ -37,6 +37,8 @@ export class HomePage implements OnInit {
         console.log(this.aaa.nome);
       });
       
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 

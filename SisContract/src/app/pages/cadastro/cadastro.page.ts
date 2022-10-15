@@ -51,9 +51,9 @@ export class CadastroPage implements OnInit {
   }
 
   async register(){
-    let registo = this._empregadoFBS.registerFB(this.form_cadastro.value)
+    let registo = this._empresaFBS.registerFB(this.form_cadastro.value)
     if(registo){
-      this.presentAlert('SisContract','cadastrou','aaaaaaa.');
+      this.presentAlert('SisContract','cadastro Realizado','Redirecionado ao Login');
       this._router.navigate(['/home']);
     }else{
       this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
@@ -64,23 +64,16 @@ export class CadastroPage implements OnInit {
     this.isSubmitted = true;
     console.log("aqui");
     if(!this.form_cadastro.valid || !this.documento || !this.checkboxes){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
-      //this.docTamanho();
       this.register();
-      //this.cadastrar();
     }
   }
 
   get errorControl(){
     return this.form_cadastro.controls;
   }
-
-  /*onTermsChanged(event: Event) {
-    const ev = event as CheckboxCustomEvent;
-    this.canDismiss = ev.detail.checked;
-  }*/
 
   addValue(event){
     if(event.detail.checked){
@@ -119,13 +112,13 @@ export class CadastroPage implements OnInit {
       }
       if(this.documento == 'cnpj'){
         this._empresaFBS.cadastroEmpresa(this.form_cadastro.value).then(()=>{
-          this.presentAlert("Cadastro", "Sucesso!", "Cadastro da empresa realizado com sucesso!");
-          this._router.navigate(["/home"]);
+          this.presentAlert("Cadastro", "Sucesso!", "Cadastro do usuário realizado com sucesso!");
+          this.register();
+          this.form_cadastro.reset();
+          this._router.navigateByUrl('/',{replaceUrl:true})
         });
       }
   }
-
-  alterar(){}
 
   async presentAlert(header: string, subHeader: string, message: string) {
     const alert = await this.alertController.create({

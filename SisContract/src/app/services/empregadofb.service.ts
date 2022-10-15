@@ -35,7 +35,6 @@ export class EmpregadoService {
       senha:empregado.senha,
       nome:empregado.nome,
       documento:empregado.documento,
-      endereco:empregado.endereco,
       areaAtuacao:empregado.areaAtuacao,
       escolaridade:empregado.escolaridade,
       experiencia:empregado.experiencia,
@@ -47,7 +46,6 @@ export class EmpregadoService {
   updateinfos(empregado:Empregado,id:string){
     return this._angularFirestore.collection(this.PATH).doc(id).update({
       nome:empregado.nome,
-      endereco:empregado.endereco,
       areaAtuacao:empregado.areaAtuacao,
       escolaridade:empregado.escolaridade,
       experiencia:empregado.experiencia,

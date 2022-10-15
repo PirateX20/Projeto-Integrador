@@ -55,7 +55,6 @@ export class LoginPage implements OnInit {
       this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
-      //this.docTamanho();
       this.authLogin();
     }
   }
@@ -63,7 +62,6 @@ export class LoginPage implements OnInit {
   async authLogin(){
     this._empregadoFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
       const uuser = credenciais.user;
-      console.log(uuser);
       this._router.navigate(['/empregadohome']);
     }).catch((err)=>{
       console.log(err);
