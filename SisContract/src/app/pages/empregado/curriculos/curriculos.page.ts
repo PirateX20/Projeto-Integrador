@@ -23,7 +23,7 @@ export class CurriculosPage implements OnInit {
     if(this.user !== null){
       const email = this.user.email
       const userId = this.user.uid
-      console.log(email);
+      //console.log(email);
       //this.oemail = email;
     }else{
       this._router.navigate(['/home']);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
@@ -16,6 +16,7 @@ export class InformacoesPage implements OnInit {
   user = this.auth.currentUser;
   isSubmitted: boolean;
   formEdit: FormGroup;
+  empresa:any;
   
   constructor(public menuCtrl: MenuController,
     private alertController: AlertController,
@@ -27,8 +28,8 @@ export class InformacoesPage implements OnInit {
     this.openUser();
     this.menuCtrl.enable(true);
     this.formEdit = this.formBuilder.group({
-      nome:[""],
-      cargos:[""]
+      nome:["",[Validators.required]],
+      cargos:["",[Validators.required]]
     })
 
   }
@@ -63,10 +64,17 @@ export class InformacoesPage implements OnInit {
 
   openUser(){
     if(this.user !== null){
-      const email = this.user.email
       const userId = this.user.uid
-      this.idCurrent= userId;
-      console.log(userId);
+      this.idCurrent = userId;
+      this._empresaFBS.getEmpresa(userId).subscribe(res=>{
+        this.empresa = res;
+        this.formEdit.controls['nome'].setValue(this.empresa.nome);
+        this.formEdit.controls['cargos'].setValue(this.empresa.cargos);
+        
+        //console.log(this.empregado.nome);
+      });
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 

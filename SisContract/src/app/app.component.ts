@@ -12,14 +12,13 @@ import { EmpresaService } from './services/empresafb.service';
 })
 export class AppComponent {
   public appPages :any;
-  public tipo: string = 'f';
+  public tipo: string ='j';
   empregado : Empregado;
   constructor(
     private _router:Router,
     private _empregadoFBS : EmpregadoService,
     private _empresaFBS : EmpresaService,
   ) {
-
   }
 
   ngOnInit(){
@@ -31,14 +30,15 @@ export class AppComponent {
         { title: 'Propostas' , url: '/empregadopropostas', icon: 'briefcase'},
         { title: 'Configurações', url: '/empregadoconfigs', icon: 'settings' },
       ];
-    }
-    if(this.appPages=='j'){
-      this.appPages = [
-        { title: 'Home', url: '/empresahome', icon: 'home' },
-        { title: 'Informações', url: '/empresainformacoes', icon: 'information-circle' },
-        { title: 'Currículos', url: '/empresaCurriculos', icon: 'reader' },
-        { title: 'Configurações', url: '/empresaconfigs', icon: 'settings' },
-      ];
+    }else{
+      if(this.tipo=='j'){
+        this.appPages = [
+          { title: 'Home', url: '/empresahome', icon: 'home' },
+          { title: 'Informações', url: '/empresainformacoes', icon: 'information-circle' },
+          { title: 'Currículos', url: '/empresaCurriculos', icon: 'reader' },
+          { title: 'Configurações', url: '/empresaconfigs', icon: 'settings' },
+        ];
+      }
     }
     
   }
@@ -50,8 +50,12 @@ export class AppComponent {
   }
 
   async logout(){
-    await this._empregadoFBS.logout();
-    await this._empresaFBS.logout();
+    if(this.tipo=='f'){
+      await this._empregadoFBS.logout();
+    }
+    if(this.tipo=='j'){
+      await this._empresaFBS.logout();
+    }
     this._router.navigateByUrl('/',{replaceUrl:true});
   }
 }
