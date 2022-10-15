@@ -43,7 +43,7 @@ export class InformacoesPage implements OnInit {
   submitForm(): Boolean{
     this.isSubmitted = true;
     if(!this.formEdit.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
       //this.docTamanho();
@@ -71,6 +71,7 @@ export class InformacoesPage implements OnInit {
   openUser(){
     if(this.user !== null){
       const userId = this.user.uid
+      this.idCurrent = userId
       this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
         this.empregado = res;
         this.formEdit.controls['nome'].setValue(this.empregado.nome);
@@ -79,7 +80,7 @@ export class InformacoesPage implements OnInit {
         this.formEdit.controls['experiencia'].setValue(this.empregado.experiencia);
         this.formEdit.controls['especializacoes'].setValue(this.empregado.especializacoes);
         
-        console.log(this.empregado.nome);
+        //console.log(this.empregado.nome);
       });
     }else{
       this._router.navigate(['/home']);

@@ -3,6 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuController, AlertController } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
 
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
@@ -62,7 +63,7 @@ export class LoginPage implements OnInit {
   async authLogin(){
     this._empresaFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
       const uuser = credenciais.user;
-      console.log(uuser);
+      //console.log(uuser);
       this._router.navigate(['/empresahome']);
     }).catch((err)=>{
       console.log(err);

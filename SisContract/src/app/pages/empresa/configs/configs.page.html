@@ -4,7 +4,6 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -14,17 +13,17 @@
     <main class="container">
       <ion-list color="aqua">
         <h2><span class="Sis">Sis<span class="resto">C</span></span><ion-icon name="reader-outline" color="btns" class="iconeSC"></ion-icon><span class="resto">ntract</span></h2>
-        <form>
+        <form [formGroup]="formConfig">
             <div class="input-field">
-              <ion-input type="text" placeholder="E-mail"></ion-input>
+              <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input type="password" placeholder="Senha"></ion-input>
+              <ion-input type="password" placeholder="Senha" formControlName="senha"></ion-input>
               <div class="underline"></div>
             </div>
             <div class="input-field">
-              <ion-input placeholder="CNPJ"></ion-input>
+              <ion-input placeholder="CNPJ" formControlName="documento"></ion-input>
               <div class="underline"></div>
             </div>
             <footer>
@@ -36,7 +35,7 @@
             </footer>
         </form>
         <div>
-          <ion-button (click)="excluir()" class="botao-cadastro" color="btns" expand="block"></ion-button>
+          <ion-button (click)="excluir()" class="botao-cadastro" color="btns" expand="block">Excluir Conta</ion-button>
         </div>
 
       </ion-list>

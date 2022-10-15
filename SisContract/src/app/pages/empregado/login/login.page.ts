@@ -3,6 +3,7 @@ import { Auth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuController, AlertController } from '@ionic/angular';
+import { AppComponent } from 'src/app/app.component';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
 

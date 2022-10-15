@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
@@ -14,6 +14,7 @@ export class ConfigsPage implements OnInit {
   formConfig: FormGroup;
   checkboxes: boolean;
   auth = getAuth();
+  empresa:any;
   isSubmitted: boolean
   user = this.auth.currentUser;
 
@@ -26,22 +27,20 @@ export class ConfigsPage implements OnInit {
     this.openUser();
     this.menuCtrl.enable(true);
     this.formConfig = this.formBuilder.group({
-      email: [this.user.email],
-      senha: [""],
-      documento: [""],
+      email: ["",[Validators.required,Validators.email]],
+      senha: ["",[Validators.required,Validators.minLength(6)]],
+      documento: ["",[Validators.required,Validators.minLength(14),Validators.maxLength(14)]],
     })
   }
 
   submitForm(): Boolean{
     this.isSubmitted = true;
-    console.log("aqui");
+    //console.log("aqui");
     if(!this.formConfig.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
-      //this.docTamanho();
       this.alterar();
-      //this.cadastrar();
     }
   }
 
@@ -60,7 +59,7 @@ export class ConfigsPage implements OnInit {
     let uuser = aauth.currentUser;
     let id = uuser.uid
     this._empresaFBS.updateConfig(this.formConfig.value,id).then(()=>{
-      this.presentAlert("Cadastro", "Sucesso!", "Cadastro do usuário realizado com sucesso!");
+      this.presentAlert("SisContract", "Sucesso!", "Configurações alteradas com sucesso!");
       this.formConfig.reset();
     })
   }
@@ -80,7 +79,14 @@ export class ConfigsPage implements OnInit {
       const email = this.user.email
       const userId = this.user.uid
       console.log(email);
-      //this.oemail = email;
+      this._empresaFBS.getEmpresa(userId).subscribe(res=>{
+        this.empresa = res
+        this.formConfig.controls['email'].setValue(this.empresa.email);
+        this.formConfig.controls['senha'].setValue(this.empresa.senha);
+        this.formConfig.controls['documento'].setValue(this.empresa.documento);
+      });
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 

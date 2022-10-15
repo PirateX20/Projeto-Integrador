@@ -14,6 +14,7 @@ export class HomePage implements OnInit {
   idCurrent: any;
   auth = getAuth();
   user = this.auth.currentUser;
+  empresa:any;
   constructor(public menuCtrl: MenuController,private _empresaFBS: EmpresaService,private _router: Router) { }
 
   ngOnInit() {
@@ -26,7 +27,12 @@ export class HomePage implements OnInit {
       const email = this.user.email
       const userId = this.user.uid
       this.idCurrent= userId;
-      console.log(userId);
+      this._empresaFBS.getEmpresa(this.idCurrent).subscribe(res=>{
+        this.empresa = res;
+        //console.log(this.empresa.nome);
+      });
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 }

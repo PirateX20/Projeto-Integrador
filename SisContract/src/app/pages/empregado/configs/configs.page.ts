@@ -62,7 +62,7 @@ export class ConfigsPage implements OnInit {
         this.formConfig.controls['senha'].setValue(this.empregado.senha);
         this.formConfig.controls['documento'].setValue(this.empregado.documento);
         
-        console.log(this.empregado.nome);
+        //console.log(this.empregado.nome);
       });
     }else{
       this._router.navigate(['/home']);

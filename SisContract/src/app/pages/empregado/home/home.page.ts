@@ -30,11 +30,11 @@ export class HomePage implements OnInit {
     if(this.user !== null){
       const email = this.user.email
       const userId = this.user.uid
-      console.log(email);
+      //console.log(email);
       this.oemail = userId;
       this._empregadoFBS.getEmpregado(this.oemail).subscribe(res=>{
         this.aaa = res;
-        console.log(this.aaa.nome);
+        //console.log(this.aaa.nome);
       });
       
     }else{
