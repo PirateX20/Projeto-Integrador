@@ -32,11 +32,11 @@ export class InformacoesPage implements OnInit {
     this.openUser();
     this.menuCtrl.enable(true);
     this.formEdit = this.formBuilder.group({
-      nome:[""],
-      areaAtuacao:[""],
-      escolaridade: [""],
-      experiencia:[""],
-      especializacoes:[""]
+      nome:["",[Validators.required]],
+      areaAtuacao:["",[Validators.required]],
+      escolaridade: ["",[Validators.required]],
+      experiencia:["",[Validators.required]],
+      especializacoes:["",[Validators.required]]
     })
   }
 
@@ -73,14 +73,16 @@ export class InformacoesPage implements OnInit {
       const userId = this.user.uid
       this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
         this.empregado = res;
-        this.e.nome = this.empregado.nome;
-        this.e.areaAtuacao = this.empregado.areaAtuacao;
-        this.e.escolaridade = this.empregado.escolaridade;
-        this.e.experiencia = this.empregado.experiencia;
-        this.e.especializacoes = this.empregado.especializacoes;
+        this.formEdit.controls['nome'].setValue(this.empregado.nome);
+        this.formEdit.controls['areaAtuacao'].setValue(this.empregado.areaAtuacao);
+        this.formEdit.controls['escolaridade'].setValue(this.empregado.escolaridade);
+        this.formEdit.controls['experiencia'].setValue(this.empregado.experiencia);
+        this.formEdit.controls['especializacoes'].setValue(this.empregado.especializacoes);
         
         console.log(this.empregado.nome);
       });
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 

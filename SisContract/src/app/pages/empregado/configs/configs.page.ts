@@ -17,7 +17,7 @@ export class ConfigsPage implements OnInit {
   user = this.auth.currentUser;
   checkboxes: boolean;
   formConfig: FormGroup;
-  empregado:Empregado;
+  empregado:any;
 
   constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService,
     private _router : Router,private formBuilder: FormBuilder,private alertController:AlertController) { }
@@ -26,9 +26,9 @@ export class ConfigsPage implements OnInit {
     this.openUser();
     this.menuCtrl.enable(true);
     this.formConfig = this.formBuilder.group({
-      email: [this.user.email],
-      senha: [""],
-      documento: [""],
+      email: ["",[Validators.required,Validators.email]],
+      senha: ["",[Validators.required,Validators.minLength(6)]],
+      documento: ["",[Validators.required,Validators.minLength(11),Validators.maxLength(11)]],
     })
   }
 
@@ -39,9 +39,7 @@ export class ConfigsPage implements OnInit {
       this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
-      //this.docTamanho();
       this.alterar();
-      //this.cadastrar();
     }
   }
 
@@ -57,10 +55,17 @@ export class ConfigsPage implements OnInit {
 
   openUser(){
     if(this.user !== null){
-      const email = this.user.email
       const userId = this.user.uid
-      console.log(email);
-      //this.oemail = email;
+      this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
+        this.empregado = res;
+        this.formConfig.controls['email'].setValue(this.empregado.email);
+        this.formConfig.controls['senha'].setValue(this.empregado.senha);
+        this.formConfig.controls['documento'].setValue(this.empregado.documento);
+        
+        console.log(this.empregado.nome);
+      });
+    }else{
+      this._router.navigate(['/home']);
     }
   }
 

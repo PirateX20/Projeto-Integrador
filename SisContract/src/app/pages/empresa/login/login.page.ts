@@ -18,7 +18,6 @@ export class LoginPage implements OnInit {
     private activatedRoute: ActivatedRoute, 
     public menuCtrl: MenuController,
     private _auth : Auth,
-    private _empregadoFBS : EmpregadoService,
     private _empresaFBS : EmpresaService,
     private alertController: AlertController,
     private formBuilder : FormBuilder,
@@ -61,10 +60,10 @@ export class LoginPage implements OnInit {
   }
 
   async authLogin(){
-    this._empregadoFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
+    this._empresaFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
       const uuser = credenciais.user;
       console.log(uuser);
-      this._router.navigate(['/empregadohome']);
+      this._router.navigate(['/empresahome']);
     }).catch((err)=>{
       console.log(err);
       this.presentAlert('SisContract','falha no cadastro','Tente novamente.');

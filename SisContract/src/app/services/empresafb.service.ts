@@ -31,7 +31,6 @@ export class EmpresaService {
       senha:empresa.senha,
       nome:empresa.nome,
       documento:empresa.documento,
-      endereco:empresa.endereco,
       cargos: empresa.cargos
     });
   }
@@ -39,7 +38,6 @@ export class EmpresaService {
   updateInfos(empresa:Empresa,id:string){
     return this._angularFirestore.collection(this.PATH).doc(id).update({
       nome: empresa.nome,
-      endereco:empresa.endereco,
       cargos: empresa.cargos
     })
   }
@@ -50,6 +48,10 @@ export class EmpresaService {
       senha: empresa.senha,
       documeno: empresa.documento
     })
+  }
+
+  getEmpresas(){
+    return this._angularFirestore.collection(this.PATH).snapshotChanges();
   }
 
   async loginFB(email:any,senha:any){
