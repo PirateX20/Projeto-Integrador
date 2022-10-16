@@ -19,7 +19,10 @@
           <ion-item *ngFor="let empresa of empresas">
             <ion-buttons slot="end">
               <ion-button (click)="ver(empresa)">
-                <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
+                <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
+              </ion-button>
+              <ion-button (click)="ver(empresa)">
+                <ion-icon name="mail-outline" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
             <ion-label>{{ empresa.nome }}</ion-label>
@@ -35,7 +38,7 @@
           <ion-item *ngFor="let result of results">
             <ion-buttons slot="end">
               <ion-button (click)="ver(result)">
-                <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
+                <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
             <ion-label>{{ result }}</ion-label>

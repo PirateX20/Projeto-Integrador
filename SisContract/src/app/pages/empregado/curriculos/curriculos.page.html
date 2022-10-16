@@ -12,12 +12,12 @@
   <ion-radio-group value="custom-checked">
     <ion-item>
       <ion-label>Modelo 1</ion-label>
-      <ion-radio value="modelo1"></ion-radio>
+      <ion-radio id="m1" value="modelo1" (click)="curriculoModelo1()"></ion-radio>
       <!--Modal para ver como é o modelo ---  isso por imagem dentro do modal-->
     </ion-item>
     <ion-item>
       <ion-label>Modelo 2</ion-label>
-      <ion-radio value="modelo2"></ion-radio>
+      <ion-radio id="m2" value="modelo2" (click)="curriculoModelo2()"></ion-radio>
       <!--Modal para ver como é o modelo ---  isso por imagem dentro do modal-->
     </ion-item>
     <ion-item>
@@ -26,5 +26,9 @@
       <!--Modal para ver como é o modelo ---  isso por imagem dentro do modal-->
     </ion-item>
   </ion-radio-group>
+
+  <ion-button (click)="criaCurriculo()" expand="block" fill="clear" shape="round">
+    Click me
+  </ion-button>
 
 </ion-content>

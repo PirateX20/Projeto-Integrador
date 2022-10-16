@@ -12,7 +12,7 @@ import { EmpresaService } from './services/empresafb.service';
 })
 export class AppComponent {
   public appPages :any;
-  public tipo: string ='j';
+  public tipo: string ='f';
   empregado : Empregado;
   constructor(
     private _router:Router,
