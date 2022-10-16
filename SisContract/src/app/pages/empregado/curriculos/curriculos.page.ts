@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
+import { jsPDF } from 'jspdf';
 
 @Component({
   selector: 'app-curriculos',
@@ -10,9 +11,13 @@ import { EmpregadoService } from 'src/app/services/empregadofb.service';
   styleUrls: ['./curriculos.page.scss'],
 })
 export class CurriculosPage implements OnInit {
+
+  //@ViewChild('main',{static:false}) el:ElementRef;
   auth = getAuth();
+  submeter:boolean;
+  modelo:any;
   user = this.auth.currentUser;
-  constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService, private _router: Router) { }
+  constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService, private _router: Router,private alertController: AlertController) { }
 
   ngOnInit() {
     this.openUser();
@@ -28,6 +33,42 @@ export class CurriculosPage implements OnInit {
     }else{
       this._router.navigate(['/home']);
     }
+  }
+
+  curriculoModelo1(){
+    this.modelo=1;
+  }
+
+  curriculoModelo2(){
+    this.modelo=2;
+  }
+
+  criaCurriculo(){
+    //let pdf = new jsPDF('p','pt','a4');
+    if(this.modelo==1){
+      this._router.navigate(['/modelo1']);
+      /*pdf.html(this.el.nativeElement,{
+        callback:(pdf)=>{
+          pdf.save("teste.pdf");
+        }
+      })*/
+    }else{
+      if(this.modelo==2){
+
+      }else{
+        this.presentAlert("SisContract", "erro", "Escolha um modelo.");
+      }
+    }
+  }
+
+  async presentAlert(header: string, subHeader: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      subHeader,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
 }

@@ -16,6 +16,7 @@ export class PropostasPage implements OnInit {
   auth = getAuth();
   user = this.auth.currentUser;
   empresas:Empresa[];
+  empregado:any;
   constructor(
     public menuCtrl: MenuController,
     private alertController: AlertController,
@@ -36,6 +37,7 @@ export class PropostasPage implements OnInit {
 
   handleChange(event) {
     const query = event.target.value.toLowerCase();
+    let a:any = [...this.empresas]
     this.results = this.data.filter(d => d.toLowerCase().indexOf(query) > -1);
   }
 
@@ -47,9 +49,12 @@ export class PropostasPage implements OnInit {
     if(this.user !== null){
       const email = this.user.email
       const userId = this.user.uid
-
+      this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
+        this.empregado = res;
+        //console.log(this.empregado.nome);
+      });
     }else{
-      this._router.navigate(['/home']);
+      //this._router.navigate(['/home']);
     }
   }
 
