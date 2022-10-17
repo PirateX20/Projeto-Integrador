@@ -31,6 +31,7 @@ export class PropostasPage implements OnInit {
     private _entrevistaFBS:EntrevistaService,
   ) {
     this.openEmpresas();
+    console.log(this.entrevistas)
     this.openEntrevistas();
   }
 
@@ -97,7 +98,7 @@ export class PropostasPage implements OnInit {
 
   envia(empresa:any){
     console.log(empresa.id);
-    this._entrevistaFBS.solicitar(empresa.id,this.idteste).then(()=>{
+    this._entrevistaFBS.solicitar(empresa.id,this.idteste,this.empregado.nome,empresa.nome).then(()=>{
       this.presentAlert("SisContract", "Sucesso!", "Solicitação enviada!");
     })
   }

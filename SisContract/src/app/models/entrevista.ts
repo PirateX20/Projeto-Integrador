@@ -2,6 +2,8 @@ export class Entrevista {
     private _idEmpresa:string;
     private _idEmpregado:string;
     private _idEntrevista:string;
+    private _nomeEmpregado: string;
+    private _nomeEmpresa: string;
     private _dataEntrevista: Date;
 
     constructor(idEmpresa:string,idEmpregado:string,idEntrevista:string,dataEntrevista:Date){
@@ -27,5 +29,17 @@ export class Entrevista {
     }
     public set dataEntrevista(value: Date) {
         this._dataEntrevista = value;
+    }
+    public get nomeEmpregado(): string {
+        return this._nomeEmpregado;
+    }
+    public set nomeEmpregado(value: string) {
+        this._nomeEmpregado = value;
+    }
+    public get nomeEmpresa(): string {
+        return this._nomeEmpresa;
+    }
+    public set nomeEmpresa(value: string) {
+        this._nomeEmpresa = value;
     }
 }

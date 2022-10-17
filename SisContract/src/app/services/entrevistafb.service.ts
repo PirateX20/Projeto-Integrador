@@ -8,28 +8,23 @@ export class EntrevistaService {
   private PATH: string = "entrevista";
   constructor(private _angularFirestore: AngularFirestore) { }
 
-  agendarEntrevista(idEmpresa:string,idEmpregado:string,dataEntrevista:any){
-    /*return this._angularFirestore.collection(this.PATH).add({
-      empresa: idEmpresa,
-      empregado: idEmpregado,
-      entrevista: dataEntrevista
-    });*/
-    return this._angularFirestore.collection(this.PATH).doc(idEmpregado).set({
-      empresa: idEmpresa,
-      empregado: idEmpregado,
-      entrevista: dataEntrevista
+  agendarEntrevista(idEntrevista:any,dataEntrevista:any){
+    return this._angularFirestore.collection(this.PATH).doc(idEntrevista).update({
+      dataEntrevista: dataEntrevista
     });
   }
 
-  solicitar(idEmpresa:string,idEmpregado:string){
+  solicitar(idEmpresa:string,idEmpregado:string,nomeEmpregado:string,nomeEmpresa:string){
     return this._angularFirestore.collection(this.PATH).add({
       empresa: idEmpresa,
-      empregado: idEmpregado
+      empregado: idEmpregado,
+      nomeEmpresa: nomeEmpresa,
+      nomeEmpregado: nomeEmpregado
     });
   }
 
   getEntrevista(id:string){
-    return this._angularFirestore.collection(this.PATH).doc(id).valueChanges();
+    return this._angularFirestore.collection(this.PATH).doc(id).snapshotChanges();
   }
 
   getEntrevistas(){
