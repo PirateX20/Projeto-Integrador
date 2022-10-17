@@ -4,8 +4,10 @@ import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
 import { Empresa } from 'src/app/models/empresa';
+import { Entrevista } from 'src/app/models/entrevista';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
+import { EntrevistaService } from 'src/app/services/entrevistafb.service';
 
 @Component({
   selector: 'app-propostas',
@@ -14,17 +16,22 @@ import { EmpresaService } from 'src/app/services/empresafb.service';
 })
 export class PropostasPage implements OnInit {
   auth = getAuth();
+  idteste:any;
   user = this.auth.currentUser;
   empresas:Empresa[];
   empregado:any;
+  entrevistas:Entrevista[];
+  teste:any;
   constructor(
     public menuCtrl: MenuController,
     private alertController: AlertController,
     private _empregadoFBS: EmpregadoService,
     private _router : Router,
-    private _empresaFBS: EmpresaService
+    private _empresaFBS: EmpresaService,
+    private _entrevistaFBS:EntrevistaService,
   ) {
     this.openEmpresas();
+    this.openEntrevistas();
   }
 
   ngOnInit() {
@@ -42,16 +49,19 @@ export class PropostasPage implements OnInit {
   }
 
   ver(algo:any){
-    console.log(algo);
+    this.teste = algo
+    this.setOpen(true);
   }
 
   openUser(){
     if(this.user !== null){
       const email = this.user.email
       const userId = this.user.uid
-      this._empregadoFBS.getEmpregado(userId).subscribe(res=>{
+      this.idteste = this.user.uid
+      console.log(this.idteste);
+      this._empregadoFBS.getEmpregado(this.idteste).subscribe(res=>{
         this.empregado = res;
-        //console.log(this.empregado.nome);
+        //console.log(this.empregado.id);
       });
     }else{
       //this._router.navigate(['/home']);
@@ -67,6 +77,38 @@ export class PropostasPage implements OnInit {
         }as Empresa;
       })
     })
+  }
+
+  openEntrevistas(){
+    this._entrevistaFBS.getEntrevistas().subscribe(res=>{
+      this.entrevistas = res.map(e=>{
+        return{
+          ...e.payload.doc.data() as Entrevista
+        }as Entrevista;
+      })
+    })
+  }
+
+  isModalOpen = false;
+
+  setOpen(isOpen: boolean) {
+    this.isModalOpen = isOpen;
+  }
+
+  envia(empresa:any){
+    console.log(empresa.id);
+    this._entrevistaFBS.solicitar(empresa.id,this.idteste).then(()=>{
+      this.presentAlert("SisContract", "Sucesso!", "Solicitação enviada!");
+    })
+  }
+  async presentAlert(header: string, subHeader: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      subHeader,
+      message,
+      buttons: ['OK'],
+    });
+    await alert.present();
   }
 
 }

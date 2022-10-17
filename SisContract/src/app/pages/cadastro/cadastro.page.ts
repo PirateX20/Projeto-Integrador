@@ -62,7 +62,7 @@ export class CadastroPage implements OnInit {
 
   submitForm(): Boolean{
     this.isSubmitted = true;
-    console.log("aqui");
+    //console.log("aqui");
     if(!this.form_cadastro.valid || !this.documento || !this.checkboxes){
       this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;

@@ -12,7 +12,7 @@
     <ion-accordion-group>
       <ion-accordion value="first">
         <ion-item slot="header" color="aqua">
-          <ion-label>Solicitações enviadas</ion-label>
+          <ion-label>Enviar Solicitação</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
@@ -20,8 +20,34 @@
             <ion-buttons slot="end">
               <ion-button (click)="ver(empresa)">
                 <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
+                <ion-modal [isOpen]="isModalOpen">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar color="btns">
+                        <ion-title>Empresa</ion-title>
+                        <ion-buttons slot="end">
+                          <ion-button (click)="setOpen(false)"><ion-icon name="backspace-outline"></ion-icon></ion-button>
+                        </ion-buttons>
+                      </ion-toolbar>
+                    </ion-header>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label>Nome: {{teste.nome}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>E-mail de contato: {{teste.email}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>CNPJ: {{teste.documento}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Cargos Ofertados: <br>{{teste.cargos}}</ion-label>
+                      </ion-item>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
               </ion-button>
-              <ion-button (click)="ver(empresa)">
+              <ion-button (click)="envia(empresa)">
                 <ion-icon name="mail-outline" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
@@ -35,13 +61,13 @@
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
-          <ion-item *ngFor="let result of results">
+          <ion-item *ngFor="let entrevista of entrevistas">
             <ion-buttons slot="end">
-              <ion-button (click)="ver(result)">
+              <ion-button (click)="ver(entrevista)">
                 <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
-            <ion-label>{{ result }}</ion-label>
+            <ion-label>{{ entrevista.idEmpregado }}</ion-label>
           </ion-item>
         </div>
       </ion-accordion>
