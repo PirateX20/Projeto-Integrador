@@ -87,5 +87,9 @@ export class InformacoesPage implements OnInit {
     }
   }
 
+  onClick(){
+    this.presentAlert('SisContract', 'Para os campo escolaridade, experiencia e especializacoes', 'Separe as Informações com virgulas(,).');
+  }
+
 
 }

@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     private _empresaFBS : EmpresaService,
     private alertController: AlertController,
     private formBuilder : FormBuilder,
-    private _router: Router) {
+    private _router: Router,
+    private myApp:AppComponent) {
   }
   cpf_cnpj: number;
   isSubmitted: boolean;
@@ -52,7 +53,7 @@ export class LoginPage implements OnInit {
   submitForm(){
     this.isSubmitted = true;
     if(!this.form_login.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
       //this.docTamanho();
@@ -63,6 +64,7 @@ export class LoginPage implements OnInit {
   async authLogin(){
     this._empresaFBS.loginFB(this.form_login.controls['email'].value,this.form_login.controls['senha'].value).then((credenciais)=>{
       const uuser = credenciais.user;
+      this.myApp.tipoUser("j");
       //console.log(uuser);
       this._router.navigate(['/empresahome']);
     }).catch((err)=>{

@@ -11,7 +11,7 @@ import { EmpregadoService } from 'src/app/services/empregadofb.service';
   styleUrls: ['./modelo1.page.scss'],
 })
 export class Modelo1Page implements OnInit {
-  @ViewChild('main',{static:false}) el:ElementRef;
+  @ViewChild('corpo',{static:false}) el:ElementRef;
   auth = getAuth();
   user = this.auth.currentUser;
   usuario:any;
@@ -19,7 +19,7 @@ export class Modelo1Page implements OnInit {
 
   ngOnInit() {
     this.openUser();
-    this.menuCtrl.enable(true);
+    this.menuCtrl.enable(false);
   }
 
   openUser(){
@@ -46,6 +46,8 @@ export class Modelo1Page implements OnInit {
     })
   }
 
-
+  back(){
+    this._router.navigate(['/empregadocurriculos']);
+  }
 
 }

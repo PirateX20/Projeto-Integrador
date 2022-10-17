@@ -31,7 +31,7 @@ import { provideStorage, getStorage } from '@angular/fire/storage';
     provideFirestore(()=>getFirestore()),
     provideStorage(()=>getStorage())
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },AppComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

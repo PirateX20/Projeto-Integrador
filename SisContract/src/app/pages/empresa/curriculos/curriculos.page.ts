@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
+import { Empregado } from 'src/app/models/empregado';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
 
@@ -12,6 +13,7 @@ import { EmpresaService } from 'src/app/services/empresafb.service';
 })
 export class CurriculosPage implements OnInit {
   idCurrent: any;
+  empregados:Empregado[];
   auth = getAuth();
   user = this.auth.currentUser;
   constructor(public menuCtrl: MenuController,
@@ -22,6 +24,7 @@ export class CurriculosPage implements OnInit {
 
   ngOnInit() {
     this.openUser();
+    this.openEmpregado();
     this.menuCtrl.enable(true);
   }
 
@@ -46,5 +49,16 @@ export class CurriculosPage implements OnInit {
     }else{
       this._router.navigate(['/home']);
     }
+  }
+
+  openEmpregado(){
+    this._empregadoFBS.getEmpregados().subscribe(res=>{
+      this.empregados = res.map(e=>{
+        return{
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Empregado
+        }as Empregado;
+      })
+    })
   }
 }

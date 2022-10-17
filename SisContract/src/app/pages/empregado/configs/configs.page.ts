@@ -84,7 +84,7 @@ export class ConfigsPage implements OnInit {
     let uuser = aauth.currentUser;
     let id = uuser.uid
     this._empregadoFBS.updateConfig(this.formConfig.value,id).then(()=>{
-      this.presentAlert("Cadastro", "Sucesso!", "Cadastro do usuário realizado com sucesso!");
+      this.presentAlert("SisContract", "Sucesso!", "Configurações do usuário alteradas com sucesso!");
       this.formConfig.reset();
     })
   }

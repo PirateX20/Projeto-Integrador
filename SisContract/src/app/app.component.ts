@@ -12,7 +12,7 @@ import { EmpresaService } from './services/empresafb.service';
 })
 export class AppComponent {
   public appPages :any;
-  public tipo: string ='f';
+  public tipo: string ;
   empregado : Empregado;
   constructor(
     private _router:Router,
@@ -22,6 +22,16 @@ export class AppComponent {
   }
 
   ngOnInit(){
+  }
+
+  redirect(url:any){
+    if(url=="/empregadoinformacoes"){
+      this._router.navigateByUrl("/empregadoinformacoes",{state:{obj:this.empregado}})
+    }
+  }
+
+  tipoUser(otipo:any){
+    this.tipo=otipo;
     if(this.tipo=='f'){
       this.appPages = [
         { title: 'Home', url: '/empregadohome', icon: 'home' },
@@ -39,13 +49,6 @@ export class AppComponent {
           { title: 'Configurações', url: '/empresaconfigs', icon: 'settings' },
         ];
       }
-    }
-    
-  }
-
-  redirect(url:any){
-    if(url=="/empregadoinformacoes"){
-      this._router.navigateByUrl("/empregadoinformacoes",{state:{obj:this.empregado}})
     }
   }
 

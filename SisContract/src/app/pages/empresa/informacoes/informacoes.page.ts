@@ -37,7 +37,7 @@ export class InformacoesPage implements OnInit {
   submitForm(): Boolean{
     this.isSubmitted = true;
     if(!this.formEdit.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
       //this.docTamanho();
@@ -76,6 +76,9 @@ export class InformacoesPage implements OnInit {
     }else{
       this._router.navigate(['/home']);
     }
+  }
+  onClick(){
+    this.presentAlert('SisContract', 'Para o campo de cargos', 'Separe as Informações com virgulas(,).');
   }
 
 }
