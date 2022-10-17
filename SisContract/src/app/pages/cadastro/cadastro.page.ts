@@ -51,13 +51,25 @@ export class CadastroPage implements OnInit {
   }
 
   async register(){
-    let registo = this._empresaFBS.registerFB(this.form_cadastro.value)
-    if(registo){
-      this.presentAlert('SisContract','cadastro Realizado','Redirecionado ao Login');
-      this._router.navigate(['/home']);
-    }else{
-      this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
+    if(this.documento=='cpf'){
+      let registo = this._empregadoFBS.registerFB(this.form_cadastro.value)
+      if(registo){
+        this.presentAlert('SisContract','cadastro Realizado','Redirecionado ao Login');
+        this._router.navigate(['/home']);
+      }else{
+        this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
+      }
     }
+    if(this.documento=='cnpj'){
+      let registo = this._empresaFBS.registerFB(this.form_cadastro.value)
+      if(registo){
+        this.presentAlert('SisContract','cadastro Realizado','Redirecionado ao Login');
+        this._router.navigate(['/home']);
+      }else{
+        this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
+      }
+    }
+
   }
 
   submitForm(): Boolean{

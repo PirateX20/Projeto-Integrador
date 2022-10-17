@@ -3,8 +3,10 @@ import { Router } from '@angular/router';
 import { AlertController, MenuController } from '@ionic/angular';
 import { getAuth } from 'firebase/auth';
 import { Empregado } from 'src/app/models/empregado';
+import { Entrevista } from 'src/app/models/entrevista';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 import { EmpresaService } from 'src/app/services/empresafb.service';
+import { EntrevistaService } from 'src/app/services/entrevistafb.service';
 
 @Component({
   selector: 'app-curriculos',
@@ -14,17 +16,21 @@ import { EmpresaService } from 'src/app/services/empresafb.service';
 export class CurriculosPage implements OnInit {
   idCurrent: any;
   empregados:Empregado[];
+  entrevistas:Entrevista[];
+  nv:any[];
   auth = getAuth();
   user = this.auth.currentUser;
   constructor(public menuCtrl: MenuController,
     private alertController: AlertController,
     private _empregadoFBS: EmpregadoService,
     private _empresaFBS: EmpresaService,
-    private _router : Router) { }
+    private _router : Router,
+    private _entrevistaFBS: EntrevistaService) { }
 
   ngOnInit() {
     this.openUser();
     this.openEmpregado();
+    this.openEntrevista();
     this.menuCtrl.enable(true);
   }
 
@@ -60,5 +66,17 @@ export class CurriculosPage implements OnInit {
         }as Empregado;
       })
     })
+  }
+
+  openEntrevista(){
+    this._entrevistaFBS.getEntrevistas().subscribe(res=>{
+      this.entrevistas = res.map(e=>{
+        return{
+          id: e.payload.doc.id,
+          ...e.payload.doc.data() as Entrevista
+        } as any
+      })
+    })
+
   }
 }
