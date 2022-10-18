@@ -90,6 +90,10 @@ export class ConfigsPage implements OnInit {
     }
   }
 
+  get errorControl(){
+    return this.formConfig.controls;
+  }
+
   private deletar(){
     let aauth = getAuth();
     let uuser = aauth.currentUser;

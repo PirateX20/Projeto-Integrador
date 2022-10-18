@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Auth } from '@angular/fire/auth';
+import { Auth, getAuth } from '@angular/fire/auth';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuController, AlertController } from '@ionic/angular';
@@ -31,6 +31,7 @@ export class LoginPage implements OnInit {
   confirm_digit: string = '-';
   second_partCNPJ: string = '/';
   form_login: FormGroup;
+  auth = getAuth();
 
   //login por cpf e cnpj, ver quantidade de numeros ... cpf 11 - cnpj 14
 
@@ -71,8 +72,6 @@ export class LoginPage implements OnInit {
       console.log(err);
       this.presentAlert('SisContract','falha no cadastro','Tente novamente.');
     })
-
-    
   }
 
   async presentAlert(header: string, subHeader: string, message: string) {
@@ -83,5 +82,9 @@ export class LoginPage implements OnInit {
       buttons: ['OK'],
     });
     await alert.present();
+  }
+
+  onClick(){
+    this._router.navigate(['/recuperar-senhaEmpresa']);
   }
 }

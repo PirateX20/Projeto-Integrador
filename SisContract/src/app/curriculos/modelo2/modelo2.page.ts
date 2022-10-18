@@ -6,11 +6,11 @@ import { jsPDF } from 'jspdf';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
 
 @Component({
-  selector: 'app-modelo1',
-  templateUrl: './modelo1.page.html',
-  styleUrls: ['./modelo1.page.scss'],
+  selector: 'app-modelo2',
+  templateUrl: './modelo2.page.html',
+  styleUrls: ['./modelo2.page.scss'],
 })
-export class Modelo1Page implements OnInit {
+export class Modelo2Page implements OnInit {
   @ViewChild('corpo',{static:false}) el:ElementRef;
   auth = getAuth();
   user = this.auth.currentUser;

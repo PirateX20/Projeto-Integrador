@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword, getAuth, signOut, updateProfile } from 
 import { BehaviorSubject, Observable } from 'rxjs';
 import { collection, getDoc, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import { collectionData } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class EmpregadoService {
   auth = getAuth();
   user = this.auth.currentUser;
 
-  constructor(private _auth: Auth,private _angularFirestore: AngularFirestore,
+  constructor(private  authn:AngularFireAuth,private _auth: Auth,private _angularFirestore: AngularFirestore,
      private _angularFireStorage: AngularFireStorage) { }
 
   cadastroEmpregado(empregado : Empregado){
@@ -50,6 +51,16 @@ export class EmpregadoService {
       escolaridade:empregado.escolaridade,
       experiencia:empregado.experiencia,
       especializacoes:empregado.especializacoes,
+    })
+  }
+
+  recoverPassword(empregado : Empregado){
+    return this.authn.sendPasswordResetEmail(empregado.email);
+  }
+
+  updateStatus(id:any,empresaNome:any){
+    return this._angularFirestore.collection(this.PATH).doc(id).update({
+      status:"Contratado por "+empresaNome
     })
   }
 

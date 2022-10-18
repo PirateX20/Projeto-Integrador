@@ -15,14 +15,72 @@
           <ion-label>Propostas recebidas</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
-          <ion-item *ngFor="let resultado of entrevistas">
+          <!--<ion-searchbar[debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>-->
+          <ion-item *ngFor="let candidato of listaCandidatos">
             <ion-buttons slot="end">
-              <ion-button (click)="ver(resultado)">
-                <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
+              <ion-button (click)="ver(candidato)">
+                <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
+                <ion-modal [isOpen]="isModalOpen">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar color="btns">
+                        <ion-title>Candidato</ion-title>
+                        <ion-buttons slot="end">
+                          <ion-button (click)="setOpen(false)">
+                            <ion-icon name="backspace-outline"></ion-icon>
+                          </ion-button>
+                        </ion-buttons>
+                      </ion-toolbar>
+                    </ion-header>
+                    <ion-content class="ion-padding">
+                      <ion-item>
+                        <ion-label>Entrevista: {{candidato?.idEntrevista}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Nome: {{empregado?.nome}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>E-mail de contato: {{empregado?.email}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>CPF: {{empregado?.documento}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Area de Atuação: <br>{{empregado?.areaAtuacao}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Escolaridade:<br>{{empregado?.escolaridade}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Experiência:<br>{{empregado?.experiencia}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Habilidades:<br>{{empregado?.especializacoes}}</ion-label>
+                      </ion-item>
+                      <ion-item>
+                        <ion-label>Marcar Entrevista</ion-label>
+                        <ion-buttons slot="end">
+                          <ion-button (click)="entrevistar(candidato)">
+                            <ion-icon slot="end" name="add"></ion-icon>
+                            Marcar
+                          </ion-button>
+                        </ion-buttons>
+                      </ion-item>
+                      <ion-item>
+                        <ion-datetime [(ngModel)]="data"></ion-datetime>
+                      </ion-item>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+              </ion-button>
+              <ion-button (click)="contratar(candidato)">
+                <ion-icon name="checkmark-circle-outline" color="btns"></ion-icon>
+              </ion-button>
+              <ion-button (click)="rejeitar(candidato)" color="btns">
+                <ion-icon name="trash-outline"></ion-icon>
               </ion-button>
             </ion-buttons>
-            <ion-label>{{ resultado.nomeEmpregado }}</ion-label>
+            <ion-label>{{ candidato.nomeEmpregado }}</ion-label>
           </ion-item>
         </div>
       </ion-accordion>
@@ -30,11 +88,13 @@
         <ion-item slot="header" color="aqua">
           <ion-label>Enviar Propostas</ion-label>
         </ion-item>
+        <ion-item>
+          <ion-datetime [(ngModel)]="data"></ion-datetime>
+        </ion-item>
         <div class="ion-padding" slot="content">
-          <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
           <ion-item *ngFor="let empregado of empregados">
             <ion-buttons slot="end">
-              <ion-button (click)="ver(empregado)">
+              <ion-button (click)="entrevistar(empregado)">
                 <ion-icon name="arrow-forward" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>

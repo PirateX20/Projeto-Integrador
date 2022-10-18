@@ -2,14 +2,14 @@ import { Empregado } from "./empregado";
 import { Entrevista } from "./entrevista";
 
 export class Contratacao{
-    private _entrevista: any;
+    private _empresa: any;
     private _idContratacao: string;
     private _dataContrata: Date;
     private _dataDemissao: Date;
     private _empregado: any;
 
-    constructor(entrevista:any,idEmpregado:string,dataContrata:Date){
-        this._entrevista=entrevista;
+    constructor(empresa:any,idEmpregado:string,dataContrata:Date){
+        this._empresa=empresa;
         this._empregado=idEmpregado;
         this.dataContrata=dataContrata;
     }
@@ -18,11 +18,11 @@ export class Contratacao{
         return this._idContratacao;
     }
 
-    public get entrevista(): any {
-        return this._entrevista;
+    public get empresa(): any {
+        return this._empresa;
     }
-    public set entrevista(value: any) {
-        this._entrevista = value;
+    public set empresa(value: any) {
+        this._empresa = value;
     }
 
     public get dataContrata(): Date {

@@ -45,6 +45,10 @@ export class InformacoesPage implements OnInit {
     }
   }
 
+  get errorControl(){
+    return this.formEdit.controls;
+  }
+
   async presentAlert(header: string, subHeader: string, message: string) {
     const alert = await this.alertController.create({
       header,

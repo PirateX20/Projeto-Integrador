@@ -20,8 +20,9 @@ export class PropostasPage implements OnInit {
   user = this.auth.currentUser;
   empresas:Empresa[];
   empregado:any;
-  entrevistas:Entrevista[];
+  entrevistas:any;
   teste:any;
+  quadroEntrevista:any;
   constructor(
     public menuCtrl: MenuController,
     private alertController: AlertController,
@@ -31,7 +32,7 @@ export class PropostasPage implements OnInit {
     private _entrevistaFBS:EntrevistaService,
   ) {
     this.openEmpresas();
-    console.log(this.entrevistas)
+    //console.log(this.entrevistas)
     this.openEntrevistas();
   }
 
@@ -59,7 +60,7 @@ export class PropostasPage implements OnInit {
       const email = this.user.email
       const userId = this.user.uid
       this.idteste = this.user.uid
-      console.log(this.idteste);
+      //console.log(this.idteste);
       this._empregadoFBS.getEmpregado(this.idteste).subscribe(res=>{
         this.empregado = res;
         //console.log(this.empregado.id);
@@ -81,12 +82,10 @@ export class PropostasPage implements OnInit {
   }
 
   openEntrevistas(){
-    this._entrevistaFBS.getEntrevistas().subscribe(res=>{
-      this.entrevistas = res.map(e=>{
-        return{
-          ...e.payload.doc.data() as Entrevista
-        }as Entrevista;
-      })
+    const email = this.user.email
+    const userId = this.user.uid
+    this._entrevistaFBS.getEntrevistaEmpregado(userId).subscribe(res=>{
+      this.entrevistas = res
     })
   }
 
@@ -94,6 +93,17 @@ export class PropostasPage implements OnInit {
 
   setOpen(isOpen: boolean) {
     this.isModalOpen = isOpen;
+  }
+
+  infos(emp:any){
+    this.quadroEntrevista = emp
+    if(!this.quadroEntrevista.dataEntrevista){
+      //this.presentAlert("SisContract","Solicitação para a empresa "+this.quadroEntrevista.nomeEmpresa,"Ainda sem retorno.")
+      this.presentAlert("SisContract","Solicitação para a empresa "+this.quadroEntrevista.nomeEmpresa,"Aguarde instruções em seu e-mail")
+    }else{
+      this.presentAlert("SisContract","Solicitação para a empresa "+this.quadroEntrevista.nomeEmpresa,
+      "Entrevista para a data: "+this.quadroEntrevista.dataEntrevista)
+    }
   }
 
   envia(empresa:any){

@@ -12,7 +12,6 @@ import { jsPDF } from 'jspdf';
 })
 export class CurriculosPage implements OnInit {
 
-  //@ViewChild('main',{static:false}) el:ElementRef;
   auth = getAuth();
   submeter:boolean;
   modelo:any;
@@ -44,17 +43,12 @@ export class CurriculosPage implements OnInit {
   }
 
   criaCurriculo(){
-    //let pdf = new jsPDF('p','pt','a4');
+
     if(this.modelo==1){
       this._router.navigate(['/modelo1']);
-      /*pdf.html(this.el.nativeElement,{
-        callback:(pdf)=>{
-          pdf.save("teste.pdf");
-        }
-      })*/
     }else{
       if(this.modelo==2){
-
+        this._router.navigate(['/modelo2']);
       }else{
         this.presentAlert("SisContract", "erro", "Escolha um modelo.");
       }

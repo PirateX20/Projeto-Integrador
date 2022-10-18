@@ -24,7 +24,16 @@ export class EntrevistaService {
   }
 
   getEntrevista(id:string){
-    return this._angularFirestore.collection(this.PATH).doc(id).snapshotChanges();
+    return this._angularFirestore.collection(this.PATH,ref=>ref.where('empresa','==',id)).valueChanges();
+  }
+
+  getEntrevistaEmpregado(id:string){
+    return this._angularFirestore.collection(this.PATH,ref=>ref.where('empregado','==',id)).valueChanges();
+  }
+
+  getEntrevistaEspecifica(idEmpregado:any,idEmpresa:any){
+    return this._angularFirestore.collection(this.PATH,ref=>ref.where('empregado','==',idEmpregado).where('empresa','==',idEmpresa)).valueChanges();
+    
   }
 
   getEntrevistas(){

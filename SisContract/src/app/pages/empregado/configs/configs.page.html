@@ -18,13 +18,26 @@
               <ion-input type="text" placeholder="E-mail" formControlName="email"></ion-input>
               <div class="underline"></div>
             </div>
+            <div *ngIf="(((errorControl.email.touched) || (errorControl.email.dirty))&& errorControl.email.errors)">
+              <span *ngIf="errorControl.email.errors?.required ">Campo Obrigatório!</span>
+              <span *ngIf="errorControl.email.errors?.email ">Campo deve ser do tipo E-mail!</span>
+            </div>
             <div class="input-field">
               <ion-input type="password" placeholder="Senha" formControlName="senha"></ion-input>
               <div class="underline"></div>
             </div>
+            <div *ngIf="(((errorControl.senha.touched) || (errorControl.senha.dirty))&& errorControl.senha.errors)">
+              <span *ngIf="errorControl.senha.errors?.required ">Campo Obrigatório!</span>
+              <span *ngIf="errorControl.senha.errors?.minlength">No mínimo 6 caracteres</span>
+            </div>
             <div class="input-field">
               <ion-input placeholder="CPF" formControlName="documento"></ion-input>
               <div class="underline"></div>
+            </div>
+            <div *ngIf="(((errorControl.documento.touched) || (errorControl.documento.dirty))&& errorControl.documento.errors)">
+              <span *ngIf="errorControl.documento.errors?.required ">Campo Obrigatório!</span>
+              <span *ngIf="errorControl.documento.errors?.minlength">campo deve ter 11 caracteres</span>
+              <span *ngIf="errorControl.documento.errors?.maxlength">campo deve ter 11 caracteres</span>
             </div>
             <footer>
               <div class="check-termos">

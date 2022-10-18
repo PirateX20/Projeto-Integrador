@@ -67,10 +67,26 @@ const routes: Routes = [
   {
     path: 'empresalogin',
     loadChildren: () => import('./pages/empresa/login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'modelo1',
     loadChildren: () => import('./curriculos/modelo1/modelo1.module').then( m => m.Modelo1PageModule)
+  },
+  {
+    path: 'modelo2',
+    loadChildren: () => import('./curriculos/modelo2/modelo2.module').then( m => m.Modelo2PageModule)
+  },
+  {
+    path: 'recuperar-senhaEmpresa',
+    loadChildren: () => import('./pages/empresa/recuperar-senha/recuperar-senha.module').then( m => m.RecuperarSenhaPageModule)
+  },
+  {
+    path: 'recuperar-senha-empregado',
+    loadChildren: () => import('./pages/empregado/recuperar-senha-empregado/recuperar-senha-empregado.module').then( m => m.RecuperarSenhaEmpregadoPageModule)
   }
+
+
+
 
 
 
