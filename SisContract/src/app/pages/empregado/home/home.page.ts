@@ -5,6 +5,7 @@ import { MenuController } from '@ionic/angular';
 import { AppComponent } from 'src/app/app.component';
 import { Empregado } from 'src/app/models/empregado';
 import { EmpregadoService } from 'src/app/services/empregadofb.service';
+import { EmpresaService } from 'src/app/services/empresafb.service';
 
 @Component({
   selector: 'app-home',
@@ -19,7 +20,13 @@ export class HomePage implements OnInit {
   e:Empregado[];
   nome!:any;
   oemail:any;
-  constructor(public menuCtrl: MenuController,private _empregadoFBS: EmpregadoService,private _router: Router, private _auth: Auth, ) { }
+  constructor(
+    public menuCtrl: MenuController,
+    private _empregadoFBS: EmpregadoService,
+    private _router: Router, 
+    private _auth: Auth,
+    private _empresaFBS:EmpresaService
+  ) { }
 
   ngOnInit() {
     this.openUser();
@@ -36,7 +43,6 @@ export class HomePage implements OnInit {
         this.aaa = res;
         //console.log(this.aaa.nome);
       });
-      
     }else{
       this._router.navigate(['/home']);
     }

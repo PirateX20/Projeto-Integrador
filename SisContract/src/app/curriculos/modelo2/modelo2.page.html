@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="btns">
+    <ion-buttons>
+      <ion-button (click)="back()" slot="start" expand="block" fill="clear" shape="round">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+      <ion-title>Currículo 2</ion-title>
+      <ion-button (click)="download()" slot="end" expand="block" fill="clear" shape="round">
+        <ion-icon name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <body class="lang- " id="corpo" #corpo>
+  <div >
+    <h1 id="title">{{usuario?.nome}}</h1>
+    <div class="clear"> </div>
+
+    <div class="section section-education">
+      <h2 class="title">Contato</h2>
+      <div class="set">
+            <div class="item">
+              <h3><span class="course l">E  -Mail   : {{usuario?.email}}</span></h3>
+            </div>
+            </div>
+      <div class="clear"> </div>
+    </div>
+
+    <div class="section section-education">
+      <h2 class="title">Documento</h2>
+      <div class="set">
+            <div class="item">
+              <h3><span class="course l">CPF    : {{usuario?.documento}}</span></h3>
+            </div>
+            </div>
+      <div class="clear"> </div>
+    </div>
+
+    <div class="section section-education">
+      <h2 class="title">Area  de  Atuação</h2>
+      <div class="set">
+            <div class="item">
+              <h3><span class="course l"> {{usuario?.areaAtuacao}}</span></h3>
+            </div>
+            </div>
+      <div class="clear"> </div>
+    </div>
+
+      <div class="section section-education">
+        <h2 class="title">Especializções</h2>
+        <div class="set">
+              <div class="item">
+                <h3><span class="course l">{{usuario?.especializacoes}}</span></h3>
+              </div>
+              </div>
+        <div class="clear"> </div>
+      </div>
+
+        <div class="section section-education">
+        <h2 class="title">Educação</h2>
+        <div class="set">
+              <div class="item">
+                <h3><span class="course l">{{usuario?.escolaridade}}</span></h3>
+              </div>
+              </div>
+        <div class="clear"> </div>
+      </div>
+
+      <div class="section section-education">
+        <h2 class="title">Experiência</h2>
+        <div class="set">
+              <div class="item">
+                <h3><span class="course l">{{usuario?.experiencia}}</span></h3>
+              </div>
+              </div>
+        <div class="clear"> </div>
+      </div>
+  </div>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  </body>
+</ion-content>
+

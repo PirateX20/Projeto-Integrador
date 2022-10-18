@@ -10,7 +10,12 @@ export class Empresa{
         return this._id;
     }
 
-    constructor(email:string,senha:string,nome:string,documento:string){
+    constructor(
+        email:string,
+        senha:string,
+        nome:string,
+        documento:string
+    ){
         this._email=email;
         this._senha=senha;
         this._nome=nome;

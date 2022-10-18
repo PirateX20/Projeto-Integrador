@@ -8,11 +8,11 @@ export class ContratacaoService {
   private PATH: string = "contratacao"
   constructor(private _angularFirestore: AngularFirestore) { }
 
-  contratar(idEntrevista:any,idEmpregado:any,dataContrata,any){
+  contratar(idEntrevista:any,idEmpregado:any,data:any){
     return this._angularFirestore.collection(this.PATH).add({
       entrevista: idEntrevista,
       empregado: idEmpregado,
-      data: dataContrata
+      dataContrata: data
     });
   }
 

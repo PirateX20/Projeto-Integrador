@@ -57,17 +57,17 @@
       </ion-accordion>
       <ion-accordion value="second">
         <ion-item slot="header" color="aqua">
-          <ion-label>Propostas</ion-label>
+          <ion-label>Propostas Enviadas</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-searchbar [debounce]="500" (ionChange)="handleChange($event)"></ion-searchbar>
           <ion-item *ngFor="let entrevista of entrevistas">
             <ion-buttons slot="end">
-              <ion-button (click)="ver(entrevista)">
+              <ion-button (click)="infos(entrevista)">
                 <ion-icon name="eye-outline" class="iconforward" color="btns"></ion-icon>
               </ion-button>
             </ion-buttons>
-            <ion-label>{{ entrevista.nomeEmpregado }}</ion-label>
+            <ion-label>{{ entrevista.nomeEmpresa }}</ion-label>
           </ion-item>
         </div>
       </ion-accordion>

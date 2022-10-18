@@ -36,9 +36,9 @@ export class HomePage implements OnInit{
     this._route.navigate(["/empresalogin"]);
   }
   
-  gotoOfflineMode(){
+  /*gotoOfflineMode(){
     this._route.navigate(["/empregadohome"]);
-  }
+  }*/
 
   async presentAlert(header: string, subHeader: string, message: string) {
     const alert = await this.alertController.create({

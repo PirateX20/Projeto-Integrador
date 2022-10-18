@@ -32,11 +32,15 @@ export class ConfigsPage implements OnInit {
     })
   }
 
+  get errorControl(){
+    return this.formConfig.controls;
+  }
+
   submitForm(): Boolean{
     this.isSubmitted = true;
     console.log("aqui");
     if(!this.formConfig.valid){
-      this.presentAlert('Agenda', 'Error', 'Todos os campos são Obrigatórios!');
+      this.presentAlert('SisContract', 'Error', 'Todos os campos são Obrigatórios!');
       return false;
     }else{
       this.alterar();

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="btns">
-    <ion-title> Home</ion-title>
+    <ion-title>Currículos</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -20,15 +20,8 @@
       <ion-radio id="m2" value="modelo2" (click)="curriculoModelo2()"></ion-radio>
       <!--Modal para ver como é o modelo ---  isso por imagem dentro do modal-->
     </ion-item>
-    <ion-item>
-      <ion-label>Modelo 3</ion-label>
-      <ion-radio value="modelo3"></ion-radio>
-      <!--Modal para ver como é o modelo ---  isso por imagem dentro do modal-->
-    </ion-item>
   </ion-radio-group>
 
-  <ion-button (click)="criaCurriculo()" expand="block" fill="clear" shape="round">
-    Click me
-  </ion-button>
+  <ion-button (click)="criaCurriculo()" expand="block" shape="round">Salvar<ion-icon name="save-outline" color="btns"></ion-icon></ion-button>
 
 </ion-content>

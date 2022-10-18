@@ -4,6 +4,7 @@ import { finalize } from 'rxjs/operators';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { Empresa } from '../models/empresa';
 import { Auth, createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class EmpresaService {
   auth = getAuth();
   user = this.auth.currentUser;
 
-  constructor(private _auth: Auth,private _angularFirestore: AngularFirestore, private _angularFireStorage: AngularFireStorage) { }
+  constructor(private  authn:AngularFireAuth,private _auth: Auth,private _angularFirestore: AngularFirestore, private _angularFireStorage: AngularFireStorage) { }
 
   cadastroEmpresa(empresa : Empresa){
     return this._angularFirestore.collection(this.PATH).add({
@@ -61,6 +62,10 @@ export class EmpresaService {
   async loginFB(email:any,senha:any){
     this.auth = getAuth();
     return signInWithEmailAndPassword(this.auth,email,senha)
+  }
+
+  recoverPassword(empresa : Empresa){
+    return this.authn.sendPasswordResetEmail(empresa.email);
   }
 
   async registerFB(empresa:Empresa){

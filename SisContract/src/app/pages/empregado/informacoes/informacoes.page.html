@@ -17,21 +17,36 @@
               <ion-input type="text" placeholder="Nome" formControlName="nome"></ion-input>
               <div class="underline"></div>
             </div>
+            <div *ngIf="(((errorControl.nome.touched) || (errorControl.nome.dirty))&& errorControl.nome.errors)">
+              <span *ngIf="errorControl.nome.errors?.required ">Campo Obrigatório!</span>
+            </div>
             <div class="input-field">
               <ion-input type="text" placeholder="Area de Atuação" formControlName="areaAtuacao"></ion-input>
               <div class="underline"></div>
+            </div>
+            <div *ngIf="(((errorControl.areaAtuacao.touched) || (errorControl.areaAtuacao.dirty))&& errorControl.areaAtuacao.errors)">
+              <span *ngIf="errorControl.areaAtuacao.errors?.required ">Campo Obrigatório!</span>
             </div>
             <div class="input-field">
               <ion-input type="text" placeholder="Escolaridade" formControlName="escolaridade"></ion-input>
               <div class="underline"></div>
             </div>
+            <div *ngIf="(((errorControl.escolaridade.touched) || (errorControl.escolaridade.dirty))&& errorControl.escolaridade.errors)">
+              <span *ngIf="errorControl.escolaridade.errors?.required ">Campo Obrigatório!</span>
+            </div>
             <div class="input-field">
               <ion-input type="text" placeholder="Experiência" formControlName="experiencia"></ion-input>
               <div class="underline"></div>
             </div>
+            <div *ngIf="(((errorControl.experiencia.touched) || (errorControl.experiencia.dirty))&& errorControl.experiencia.errors)">
+              <span *ngIf="errorControl.experiencia.errors?.required ">Campo Obrigatório!</span>
+            </div>
             <div class="input-field">
               <ion-input type="text" placeholder="Especializações" formControlName="especializacoes"></ion-input>
               <div class="underline"></div>
+            </div>
+            <div *ngIf="(((errorControl.especializacoes.touched) || (errorControl.especializacoes.dirty))&& errorControl.especializacoes.errors)">
+              <span *ngIf="errorControl.especializacoes.errors?.required ">Campo Obrigatório!</span>
             </div>
 
             <footer>
